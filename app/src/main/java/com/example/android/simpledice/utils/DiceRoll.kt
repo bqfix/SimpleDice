@@ -11,7 +11,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 class DiceRoll(
     var name: String = "",
-    var formula: String,
+    var formula: String = "",
     var hasOverHundredDice: Boolean = false
 ) : Parcelable {
 
