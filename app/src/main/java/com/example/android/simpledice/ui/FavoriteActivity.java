@@ -192,7 +192,7 @@ public class FavoriteActivity extends AppCompatActivity implements FavoriteDiceR
      * Called in onStart, as it is cheaper than using a listener, since any new rolls occuring while this is the foreground activity will be updated directly.
      */
     private void loadMostRecentDiceResults() {
-        DiceResults diceResults = Utils.retrieveLatestDiceResults(this);
+        DiceResults diceResults = Utils.INSTANCE.retrieveLatestDiceResults(this);
 
         setDataToResultsViews(diceResults);
     }
@@ -239,7 +239,7 @@ public class FavoriteActivity extends AppCompatActivity implements FavoriteDiceR
      * A helper method to handle all of the initial setup for Firebase, to be called in onCreate
      */
     private void initializeFirebase() {
-        mUserID = Constants.FIREBASE_ANONYMOUS;
+        mUserID = Constants.INSTANCE.getFIREBASE_ANONYMOUS();
         //Auth setup
         mFirebaseAuth = FirebaseAuth.getInstance();
 
@@ -275,7 +275,7 @@ public class FavoriteActivity extends AppCompatActivity implements FavoriteDiceR
      * A helper method for when signed out of FirebaseAuth
      */
     private void onSignedOutCleanup() {
-        mUserID = Constants.FIREBASE_ANONYMOUS;
+        mUserID = Constants.INSTANCE.getFIREBASE_ANONYMOUS();
         detachDatabaseFavoritesReadListener();
     }
 
@@ -291,7 +291,7 @@ public class FavoriteActivity extends AppCompatActivity implements FavoriteDiceR
                     DiceRoll diceRoll = dataSnapshot.getValue(DiceRoll.class);
                     mDiceRolls.add(diceRoll);
                     mFavoriteDiceRollAdapter.setFavoriteDiceRolls(mDiceRolls);
-                    Utils.updateAllWidgets(FavoriteActivity.this, mDiceRolls);
+                    Utils.INSTANCE.updateAllWidgets(FavoriteActivity.this, mDiceRolls);
                 }
 
                 @Override
@@ -306,7 +306,7 @@ public class FavoriteActivity extends AppCompatActivity implements FavoriteDiceR
                         if (deletedDiceRoll.getName().equals(diceRoll.getName()) && deletedDiceRoll.getFormula().equals(diceRoll.getFormula())) { //If the name and formula match, delete it
                             mDiceRolls.remove(diceRoll);
                             mFavoriteDiceRollAdapter.setFavoriteDiceRolls(mDiceRolls);
-                            Utils.updateAllWidgets(FavoriteActivity.this, mDiceRolls);
+                            Utils.INSTANCE.updateAllWidgets(FavoriteActivity.this, mDiceRolls);
                             break; //Prevent removing more than one diceRoll
                         }
                     }
@@ -322,7 +322,7 @@ public class FavoriteActivity extends AppCompatActivity implements FavoriteDiceR
 
                 }
             };
-            mBaseDatabaseReference.child(Constants.FIREBASE_DATABASE_FAVORITES_PATH).child(mUserID).addChildEventListener(mFavoriteChildEventListener);
+            mBaseDatabaseReference.child(Constants.INSTANCE.getFIREBASE_DATABASE_FAVORITES_PATH()).child(mUserID).addChildEventListener(mFavoriteChildEventListener);
         }
     }
 
@@ -331,7 +331,7 @@ public class FavoriteActivity extends AppCompatActivity implements FavoriteDiceR
      */
     private void detachDatabaseFavoritesReadListener() {
         if (mFavoriteChildEventListener != null) {
-            mBaseDatabaseReference.child(Constants.FIREBASE_DATABASE_FAVORITES_PATH).child(mUserID).removeEventListener(mFavoriteChildEventListener);
+            mBaseDatabaseReference.child(Constants.INSTANCE.getFIREBASE_DATABASE_FAVORITES_PATH()).child(mUserID).removeEventListener(mFavoriteChildEventListener);
             mFavoriteChildEventListener = null;
         }
     }

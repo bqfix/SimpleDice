@@ -30,7 +30,7 @@ public class FavoritesWidget extends AppWidgetProvider {
 
             //Intent to send to ListWidgetService
             Intent intent = new Intent(context, ListWidgetService.class);
-            String stringDiceRolls = Utils.diceRollsToString(diceRolls); //Convert diceRolls to String because parcelables don't send correctly
+            String stringDiceRolls = Utils.INSTANCE.diceRollsToString(diceRolls); //Convert diceRolls to String because parcelables don't send correctly
             intent.putExtra(context.getString(R.string.widget_dice_roll_parcelable_key), stringDiceRolls);
             intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
             views.setRemoteAdapter(R.id.widget_favorites_lv, intent);

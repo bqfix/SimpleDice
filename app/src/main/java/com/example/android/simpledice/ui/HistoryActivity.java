@@ -184,7 +184,7 @@ public class HistoryActivity extends AppCompatActivity implements HistoryResults
      * A helper method to handle all of the initial setup for Firebase, to be called in onCreate
      */
     private void initializeFirebase() {
-        mUserID = Constants.FIREBASE_ANONYMOUS;
+        mUserID = Constants.INSTANCE.getFIREBASE_ANONYMOUS();
         //Auth setup
         mFirebaseAuth = FirebaseAuth.getInstance();
 
@@ -220,7 +220,7 @@ public class HistoryActivity extends AppCompatActivity implements HistoryResults
      * A helper method for when signed out of FirebaseAuth
      */
     private void onSignedOutCleanup() {
-        mUserID = Constants.FIREBASE_ANONYMOUS;
+        mUserID = Constants.INSTANCE.getFIREBASE_ANONYMOUS();
         detachDatabaseHistoryReadListener();
     }
 
@@ -257,7 +257,7 @@ public class HistoryActivity extends AppCompatActivity implements HistoryResults
 
                 }
             };
-            mBaseDatabaseReference.child(Constants.FIREBASE_DATABASE_HISTORY_PATH).child(mUserID).addChildEventListener(mHistoryChildEventListener);
+            mBaseDatabaseReference.child(Constants.INSTANCE.getFIREBASE_DATABASE_HISTORY_PATH()).child(mUserID).addChildEventListener(mHistoryChildEventListener);
         }
     }
 
@@ -266,7 +266,7 @@ public class HistoryActivity extends AppCompatActivity implements HistoryResults
      */
     private void detachDatabaseHistoryReadListener() {
         if (mHistoryChildEventListener != null) {
-            mBaseDatabaseReference.child(Constants.FIREBASE_DATABASE_HISTORY_PATH).child(mUserID).removeEventListener(mHistoryChildEventListener);
+            mBaseDatabaseReference.child(Constants.INSTANCE.getFIREBASE_DATABASE_HISTORY_PATH()).child(mUserID).removeEventListener(mHistoryChildEventListener);
             mHistoryChildEventListener = null;
         }
     }
@@ -275,7 +275,7 @@ public class HistoryActivity extends AppCompatActivity implements HistoryResults
      * A helper method that deletes all the user's history from Firebase, and empties all views on HistoryActivity
      */
     private void clearAllHistory(){
-        mBaseDatabaseReference.child(Constants.FIREBASE_DATABASE_HISTORY_PATH).child(mUserID).setValue(null); //Delete from database
+        mBaseDatabaseReference.child(Constants.INSTANCE.getFIREBASE_DATABASE_HISTORY_PATH()).child(mUserID).setValue(null); //Delete from database
 
         //Reset stored values and update RecyclerView to empty
         mDiceResults = new ArrayList<>();

@@ -33,7 +33,7 @@ class ListRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
     //Constructor for DiceRolls List
     public ListRemoteViewsFactory(Context applicationContext, String stringDiceRolls) {
         mContext = applicationContext;
-        mDiceRolls = Utils.stringToDiceRolls(stringDiceRolls);
+        mDiceRolls = Utils.INSTANCE.stringToDiceRolls(stringDiceRolls);
     }
 
     @Override
