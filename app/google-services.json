@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "91603005022",
+    "firebase_url": "https://simple-dice-9ab64.firebaseio.com",
+    "project_id": "simple-dice-9ab64",
+    "storage_bucket": "simple-dice-9ab64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:91603005022:android:d87f026a3354fb11",
+        "android_client_info": {
+          "package_name": "com.example.android.simpledice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "91603005022-uegvsfccj1he8hktvnln045tmfqc4on9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoNhZf1waLNYc_hgEBPN_tqHZAxGzdCOE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "91603005022-uegvsfccj1he8hktvnln045tmfqc4on9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

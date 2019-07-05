@@ -1,3 +1,111 @@
 <resources>
-    <string name="app_name">Simple Dice</string>
+    <string name="app_name">Dicey Dice</string>
+
+    <!-- Shared -->
+    <string name="info_button">Info</string>
+    <string name="more_button">More</string>
+    <string name="results_header">Results</string>
+    <string name="command_input_hint">Input a command.</string>
+    <string name="history_menu_action">History</string>
+    <string name="formula_edittext_allowed_digits" translatable="false">0123456789 +-dD</string>
+    <string name="help_formula_advice">Formula must include only numbers, spaces, + and &#8211; symbols, and the letter \'d\'.  First section must NOT be negative.  Cannot randomize numbers over 1000000.  Examples include:\n\n6\n1d6\n2d8 &#8211; 1\n1d4&#8211;1d4+1d4&#8211;1d4</string> <!-- &#8211; is for en dash -->
+    <string name="help_header">Advice</string>
+    <string name="sign_out_menu">Sign out</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="dice_roll_parcelable_key" translatable="false">dice_roll_parcelable</string>
+    <!-- Delete Favorite Dialog Strings -->
+    <string name="delete_dialog_title">Delete?</string>
+    <string name="delete_dialog_message">Delete this favorite?\n\nThis action cannot be undone.</string>
+    <string name="delete_dialog_positive">Delete</string>
+    <string name="delete_dialog_negative">Cancel</string>
+    <!-- SharedPref Keys -->
+    <string name="shared_preferences_key" translatable="false">shared_preferences</string>
+    <string name="dice_results_name_key" translatable="false">dice_results_name</string>
+    <string name="dice_results_descrip_key" translatable="false">dice_results_descrip</string>
+    <string name="dice_results_total_key" translatable="false">dice_results_total</string>
+    <string name="dice_results_date_key" translatable="false">dice_results_date</string>
+    <!-- Sign Out Confirm Dialog Strings -->
+    <string name="sign_out_dialog_title">Confirm Sign Out</string>
+    <string name="sign_out_dialog_message">Sign out?</string>
+    <string name="sign_out_dialog_positive">Sign out</string>
+    <string name="sign_out_dialog_negative">Cancel</string>
+
+
+    <!-- MainActivity -->
+    <string name="roll_button">Roll</string>
+    <string name="clear_button">Clear</string>
+    <string name="favorites_title">Favorites</string>
+    <string name="all_favorites_button">All</string>
+    <string name="help_dialog_positive_button">Got it!</string>
+    <string name="sign_in_success">Signed in successfully.</string>
+
+    <!-- FavoriteActivity -->
+    <string name="favorite_activity_title">Favorites</string>
+    <string name="widget_intent_handled_boolean_key" translatable="false">widget_intent_handled_boolean_key</string>
+
+    <!-- AddFavoriteActivity -->
+    <string name="add_favorite_activity_title">Add Favorite</string>
+    <string name="edit_favorite_activity_title">Editing Favorite</string>
+    <string name="formula_header">Formula</string>
+    <string name="input_name_hint">Input name of new Favorite.</string>
+    <string name="name_header">Name</string>
+    <string name="finish_action">Done</string>
+    <string name="saved_to_firebase">Saved.</string>
+
+    <!-- HistoryActivity -->
+    <string name="history_activity_title">Roll History</string>
+    <string name="delete_all_history_action">Delete All History</string>
+    <string name="delete_all_dialog_title">Delete?</string>
+    <string name="delete_all_dialog_message">Delete all history?\n\nThis action cannot be undone.</string>
+    <string name="delete_all_dialog_positive">Delete</string>
+    <string name="delete_all_dialog_negative">Cancel</string>
+
+    <!-- Formula Errors -->
+    <string name="invalid_characters">Error: Input contains invalid characters.</string>
+    <string name="incorrectly_formatted_section">Error: A section is incorrectly formatted. </string>
+    <string name="too_many_dice">Error: Each dice roll must have less than 100000 dice.</string>
+    <string name="no_error">No errors.</string>
+    <string name="name_contains_invalid_characters">Name cannot contain : or %</string>
+
+    <!-- Custom Keyboard -->
+    <string name="one_button" translatable="false">1</string>
+    <string name="two_button" translatable="false">2</string>
+    <string name="three_button" translatable="false">3</string>
+    <string name="four_button" translatable="false">4</string>
+    <string name="five_button" translatable="false">5</string>
+    <string name="six_button" translatable="false">6</string>
+    <string name="seven_button" translatable="false">7</string>
+    <string name="eight_button" translatable="false">8</string>
+    <string name="nine_button" translatable="false">9</string>
+    <string name="zero_button" translatable="false">0</string>
+    <string name="delete_button">Delete</string>
+    <string name="enter_button" translatable="false">Enter</string>
+    <string name="d_button" translatable="false">d</string>
+    <string name="plus_button" translatable="false">+</string>
+    <string name="minus_button" translatable="false">-</string>
+
+    <!-- Widget -->
+    <string name="widget_dice_roll_parcelable_key" translatable="false">widget_dice_roll_parcelable_key</string>
+    <string name="widget_title">Favorites</string>
+    <string name="no_favorites_found">Click to refresh/launch favorites.</string>
+    <string name="widget_favorites_intent_parcelable_key" translatable="false">widget_favorites_intent_parcelable_key</string>
+
+    <!-- AboutActivity -->
+    <string name="about">About</string>
+    <string name="about_license_header">License</string>
+    <string name="about_license_body" translatable="false">MIT License
+        \n\n
+        Copyright © 2019 Benjamin Quimado Fix
+        \n\n
+        Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+        \n\n
+        The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+        \n\n
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</string>
+
+    <!-- Ads -->
+    <string name="admob_app_id" translatable="false">ca-app-pub-3686302874318115~3664776718</string>
+    <string name="admob_banner_id" translatable="false">ca-app-pub-3686302874318115/9080754927</string>
+    <string name="admob_test_banner_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
 </resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group
+        android:id="@+id/group_main">
+        <item
+            android:id="@+id/action_done"
+            android:icon="@drawable/ic_done"
+            android:title="@string/finish_action"
+            app:showAsAction="ifRoom" />
+    </group>
+
+    <group
+        android:id="@+id/group_sign_out">
+        <item
+            android:id="@+id/action_sign_out"
+            android:title="@string/sign_out_menu"
+            app:showAsAction="never" />
+    </group>
+
+</menu>
