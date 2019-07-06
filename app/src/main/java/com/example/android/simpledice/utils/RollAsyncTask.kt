@@ -8,7 +8,7 @@ class RollAsyncTask(private val mRollAsyncPostExecute: RollAsyncPostExecute) :
     override fun doInBackground(vararg params: DiceRoll): DiceResults {
         val diceRoll = params[0]
         val formula = diceRoll.formula
-        val compiledRolls = ""
+        var compiledRolls = ""
         var total: Long = 0
         val splitFormulaByD = arrayListOf<Array<String>>()
 
@@ -40,10 +40,10 @@ class RollAsyncTask(private val mRollAsyncPostExecute: RollAsyncPostExecute) :
                 val rolledValues = Utils.calculateDice(numberOfDice, dieSize) //Use the utils method to calculate a Pair with the individual values, and the total, and append/total these
 
                 if (positive) { //Add or subtract accordingly
-                    compiledRolls.plus(" +${rolledValues.first}")
+                    compiledRolls = compiledRolls.plus(" +${rolledValues.first}")
                     total += rolledValues.second!!
                 } else { //Negative
-                    compiledRolls.plus(" -${rolledValues.first}")
+                    compiledRolls = compiledRolls.plus(" -${rolledValues.first}")
                     total -= rolledValues.second!!
                 }
             }
@@ -51,10 +51,10 @@ class RollAsyncTask(private val mRollAsyncPostExecute: RollAsyncPostExecute) :
             if (splitRoll.size == 1) { //If the length is one, simply append the number and add or subtract accordingly
                 val number = splitRoll[0].trim().toLong()
                 if (positive) {
-                    compiledRolls.plus("+($number)")
+                    compiledRolls = compiledRolls.plus("+($number)")
                     total += number
                 } else { //Negative
-                    compiledRolls.plus("-($number)")
+                    compiledRolls = compiledRolls.plus("-($number)")
                     total -= number
                 }
             }

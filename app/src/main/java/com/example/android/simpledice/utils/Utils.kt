@@ -44,23 +44,23 @@ object Utils {
      */
     fun calculateDice(numberOfDice: Int, dieSize: Int): Pair<String, Long> {
         val randomizer = Random()
-        val compiledRolls = ""
+        var compiledRolls = ""
         var total: Long = 0
 
         if (numberOfDice == 0 || dieSize == 0)
             return Pair(compiledRolls, total) //Return early if answer will be 0
 
         val firstRoll = randomizer.nextInt(dieSize) + 1  //Add and append the first value, and add to total
-        compiledRolls.plus("($firstRoll")
+        compiledRolls = compiledRolls.plus("($firstRoll")
         total += firstRoll.toLong()
 
         for (currentDieNumber in 2..numberOfDice) { //Iterate through a number of times equal to the remaining dice, repeating the append and adding to total
             val roll = randomizer.nextInt(dieSize) + 1
-            compiledRolls.plus(" + $roll")
+            compiledRolls = compiledRolls.plus(" + $roll")
             total += roll.toLong()
         }
 
-        compiledRolls.plus(")") //Append closing bracket to compiledRolls and return
+        compiledRolls = compiledRolls.plus(")") //Append closing bracket to compiledRolls and return
         return Pair(compiledRolls, total)
     }
 
