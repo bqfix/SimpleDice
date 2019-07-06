@@ -161,7 +161,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
         if (mDiceRolls == null) {
             mDiceRolls = ArrayList()
         }
-        mFavoriteDiceRollAdapter!!.setFavoriteDiceRolls(mDiceRolls)
+        mFavoriteDiceRollAdapter!!.setFavoriteDiceRolls(mDiceRolls!!)
     }
 
     /**
@@ -345,7 +345,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
 
         //Blank Favorites
         mDiceRolls = ArrayList()
-        mFavoriteDiceRollAdapter!!.setFavoriteDiceRolls(mDiceRolls)
+        mFavoriteDiceRollAdapter!!.setFavoriteDiceRolls(mDiceRolls!!)
 
         //Blank Results(by blanking SharedPreferences)
         val sharedPreferences = getSharedPreferences(getString(R.string.shared_preferences_key), Context.MODE_PRIVATE)
@@ -379,7 +379,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
                 override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
                     val diceRoll = dataSnapshot.getValue(DiceRoll::class.java)
                     mDiceRolls!!.add(diceRoll!!)
-                    mFavoriteDiceRollAdapter!!.setFavoriteDiceRolls(mDiceRolls)
+                    mFavoriteDiceRollAdapter!!.setFavoriteDiceRolls(mDiceRolls!!)
                     Utils.updateAllWidgets(this@MainActivity, mDiceRolls!!)
                 }
 
@@ -392,7 +392,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
                     for (diceRoll in mDiceRolls!!) {
                         if (deletedDiceRoll!!.name == diceRoll.name && deletedDiceRoll.formula == diceRoll.formula) { //If the name and formula match, delete it
                             mDiceRolls!!.remove(diceRoll)
-                            mFavoriteDiceRollAdapter!!.setFavoriteDiceRolls(mDiceRolls)
+                            mFavoriteDiceRollAdapter!!.setFavoriteDiceRolls(mDiceRolls!!)
                             Utils.updateAllWidgets(this@MainActivity, mDiceRolls!!)
                             break //Prevent removing more than one diceRoll
                         }
