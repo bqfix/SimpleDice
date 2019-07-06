@@ -180,7 +180,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
             val diceValidity = Utils.isValidDiceRoll(this@MainActivity, formula) //Get a boolean of whether the
             if (diceValidity.isValid) {
                 //If formula is okay, make a new nameless DiceRoll for display in the results text
-                val diceRoll = DiceRoll("", formula, diceValidity.hasOverHundredDice)
+                val diceRoll = DiceRoll(formula = formula, hasOverHundredDice = diceValidity.hasOverHundredDice)
 
                 RollAsyncTask(this@MainActivity).execute(diceRoll)
 
@@ -256,7 +256,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
             command_input_et.showSoftInputOnFocus = false
 
             mCommandInputConnection = command_input_et.onCreateInputConnection(EditorInfo())
-            d_keyboard.setInputConnection(mCommandInputConnection)
+            d_keyboard.setInputConnection(mCommandInputConnection!!)
 
             command_input_et.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
                 //FocusChange listener to show custom keyboard, and minimize keyboard when clicking outside of EditText
