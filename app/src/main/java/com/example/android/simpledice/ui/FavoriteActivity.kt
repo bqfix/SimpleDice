@@ -7,10 +7,12 @@ import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuCompat
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.simpledice.R
+import com.example.android.simpledice.database.AllDiceRollsViewModel
 import com.example.android.simpledice.database.AppDatabase
 import com.example.android.simpledice.utils.DiceResults
 import com.example.android.simpledice.utils.DiceRoll
@@ -49,7 +51,7 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
             startActivity(intent)
         }
 
-        setupDatabase()
+        setupDatabaseAndViewModel()
 
         handleWidgetIntent()
 
@@ -200,8 +202,16 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
     /**
      * A helper method for preparing access to the database, and populating views relevant to it
      */
-    private fun setupDatabase() {
+    private fun setupDatabaseAndViewModel() {
         mDatabase = AppDatabase.getInstance(this)
-        //TODO Access Database and populate RecyclerView
+
+        val viewModel = ViewModelProviders.of(this).get(AllDiceRollsViewModel::class.java)
+        viewModel.diceRolls!!.observe(this, androidx.lifecycle.Observer { diceRolls ->
+            mDiceRolls = arrayListOf() //Clear and repopulate mDiceRolls
+            for (diceRoll in diceRolls) {
+                mDiceRolls!!.add(diceRoll)
+            }
+            mFavoriteDiceRollAdapter!!.setFavoriteDiceRolls(mDiceRolls!!)
+        })
     }
 }
