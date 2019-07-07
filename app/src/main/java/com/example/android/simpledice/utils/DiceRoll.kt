@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
-@Entity(tableName = "dice_rolls")
+@Entity(tableName = Constants.DICE_ROLL_TABLE_NAME)
 @Parcelize
 class DiceRoll(
     @PrimaryKey(autoGenerate = true)

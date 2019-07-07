@@ -1,9 +1,11 @@
 package com.example.android.simpledice.utils
 
 object Constants {
-    val MAX_DICE_PER_ROLL = 100000
-    val MAX_DIE_SIZE = 1000000
-    val NAME_FORMULA_HUNDRED_BREAK = "::"
-    val DICEROLL_BREAK = "%%"
-    val OVER_HUNDRED_DICE_DESCRIP = "No details available for rolls with more than 100 dice."
+    const val MAX_DICE_PER_ROLL = 100000
+    const val MAX_DIE_SIZE = 1000000
+    const val NAME_FORMULA_HUNDRED_BREAK = "::"
+    const val DICEROLL_BREAK = "%%"
+    const val OVER_HUNDRED_DICE_DESCRIP = "No details available for rolls with more than 100 dice."
+    const val DICE_ROLL_TABLE_NAME = "dice_rolls"
+    const val DICE_RESULTS_TABLE_NAME = "dice_results"
 }

@@ -9,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
 import java.text.DateFormat
 import java.util.*
 
-@Entity(tableName = "dice_results")
+@Entity(tableName = Constants.DICE_RESULTS_TABLE_NAME)
 @Parcelize
 class DiceResults(
     @PrimaryKey(autoGenerate = true)
