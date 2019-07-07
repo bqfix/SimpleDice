@@ -72,7 +72,7 @@ class AddFavoriteActivity : AppCompatActivity() {
         val formula = formula_input_et.text.toString()
         val (isValid, errorMessage, hasOverHundredDice) = Utils.isValidDiceRoll(this, formula)
         if (isValid) {
-            val diceRoll = DiceRoll(name, formula, hasOverHundredDice)
+            val diceRoll = DiceRoll(name = name, formula = formula, hasOverHundredDice = hasOverHundredDice)
             if (editingFavorite) {
                 //TODO Edit in Room
             } else {

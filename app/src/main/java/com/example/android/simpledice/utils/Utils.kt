@@ -18,7 +18,7 @@ object Utils {
         get() {
             val diceRolls = ArrayList<DiceRoll>()
             for (i in 0..49) {
-                diceRolls.add(DiceRoll("Standard Die Plus One", "1d6 + 1", false))
+                diceRolls.add(DiceRoll(name = "Standard Die Plus One", formula = "1d6 + 1", hasOverHundredDice = false))
             }
             return diceRolls
         }
@@ -31,7 +31,7 @@ object Utils {
         get() {
             val diceResults = ArrayList<DiceResults>()
             for (i in 0..49) {
-                diceResults.add(DiceResults("Standard Roll", "1d6 + 1 = +(6) + (1)", 7))
+                diceResults.add(DiceResults(name ="Standard Roll", descrip = "1d6 + 1 = +(6) + (1)", total = 7))
             }
             return diceResults
         }
@@ -132,7 +132,7 @@ object Utils {
         val total = sharedPreferences.getLong(context.getString(R.string.dice_results_total_key), 0)
         val date = sharedPreferences.getLong(context.getString(R.string.dice_results_date_key), 0)
 
-        return DiceResults(name!!, descrip!!, total, date)
+        return DiceResults(name = name!!, descrip = descrip!!, total = total, dateCreated = date)
     }
 
     /** A helper method to update all widgets when favorited DiceRoll data changes.  Generally called when updates to Favorites-based recycler views are called.
@@ -179,9 +179,9 @@ object Utils {
             if (splitByNameAndFormula.size == 3) {
                 diceRolls.add(
                     DiceRoll(
-                        splitByNameAndFormula[0],
-                        splitByNameAndFormula[1],
-                        java.lang.Boolean.valueOf(splitByNameAndFormula[2])
+                        name = splitByNameAndFormula[0],
+                        formula = splitByNameAndFormula[1],
+                        hasOverHundredDice = java.lang.Boolean.valueOf(splitByNameAndFormula[2])
                     )
                 )
             }

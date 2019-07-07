@@ -2,13 +2,18 @@ package com.example.android.simpledice.utils
 
 import android.content.Context
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.example.android.simpledice.R
 import kotlinx.android.parcel.Parcelize
 import java.text.DateFormat
 import java.util.*
 
+@Entity(tableName = "dice_results")
 @Parcelize
 class DiceResults(
+    @PrimaryKey(autoGenerate = true)
+    var databaseId: Int? = null,
     var name: String = "",
     var descrip: String = "",
     var total: Long = 0,

@@ -70,7 +70,7 @@ class RollAsyncTask(private val mRollAsyncPostExecute: RollAsyncPostExecute) :
         val name = diceRoll.name
 
         //Create a new DiceResults object and return
-        return DiceResults(name, descrip, total)
+        return DiceResults(name = name, descrip = descrip, total = total)
     }
 
 
