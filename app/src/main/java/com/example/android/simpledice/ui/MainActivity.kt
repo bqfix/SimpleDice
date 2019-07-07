@@ -4,11 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import androidx.core.view.MenuCompat
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -16,6 +11,11 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MenuCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.android.simpledice.R
 import com.example.android.simpledice.utils.DiceResults
 import com.example.android.simpledice.utils.DiceRoll
@@ -121,9 +121,9 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
      * Helper method to setup FavoriteRecyclerView, should only be called once in onCreate
      */
     private fun setupFavoriteRecyclerView() {
-        val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
+        val layoutManager = LinearLayoutManager(
             this,
-            androidx.recyclerview.widget.LinearLayoutManager.VERTICAL,
+            RecyclerView.VERTICAL,
             false
         )
         main_favorite_rv.layoutManager = layoutManager

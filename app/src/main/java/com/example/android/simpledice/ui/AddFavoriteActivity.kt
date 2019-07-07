@@ -4,8 +4,6 @@ import android.content.Context
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
-import androidx.core.view.MenuCompat
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -13,6 +11,8 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MenuCompat
 import com.example.android.simpledice.R
 import com.example.android.simpledice.utils.Constants
 import com.example.android.simpledice.utils.DiceRoll
