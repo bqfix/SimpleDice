@@ -15,9 +15,9 @@ interface DiceRollDao {
     fun insertDiceRoll(diceRoll: DiceRoll)
 
     @Delete
-    fun deleteCharacter(diceRoll: DiceRoll)
+    fun deleteDiceRoll(diceRoll: DiceRoll)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun updateCharacter(diceRoll: DiceRoll)
+    fun updateDiceRoll(diceRoll: DiceRoll)
 
 }

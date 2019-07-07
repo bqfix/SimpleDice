@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.simpledice.R
+import com.example.android.simpledice.database.AppDatabase
 import com.example.android.simpledice.utils.DiceResults
 import com.google.android.gms.ads.AdRequest
 import kotlinx.android.synthetic.main.activity_history.*
@@ -23,6 +24,8 @@ class HistoryActivity : AppCompatActivity(), HistoryResultsAdapter.HistoryResult
 
     private var mDiceResults: MutableList<DiceResults>? = null
 
+    private var mDatabase : AppDatabase? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history)
@@ -32,6 +35,8 @@ class HistoryActivity : AppCompatActivity(), HistoryResultsAdapter.HistoryResult
         setupAds()
 
         setupHistoryRecyclerView()
+
+        setupDatabase()
 
     }
 
@@ -104,7 +109,7 @@ class HistoryActivity : AppCompatActivity(), HistoryResultsAdapter.HistoryResult
      * A helper method that deletes all the user's history from Firebase, and empties all views on HistoryActivity
      */
     private fun clearAllHistory() {
-        //TODO Delete from Room
+        mDatabase!!.diceResultsDao().deleteAllDiceResults()
 
         //Reset stored values and update RecyclerView to empty
         mDiceResults = ArrayList()
@@ -122,5 +127,13 @@ class HistoryActivity : AppCompatActivity(), HistoryResultsAdapter.HistoryResult
     private fun setupAds() {
         val adRequest = AdRequest.Builder().build()
         banner_ad.loadAd(adRequest)
+    }
+
+    /**
+     * A helper method for preparing access to the database, and populating views relevant to it
+     */
+    private fun setupDatabase() {
+        mDatabase = AppDatabase.getInstance(this)
+        //TODO Access Database and populate RecyclerView
     }
 }

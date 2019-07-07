@@ -17,6 +17,7 @@ import androidx.core.view.MenuCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.simpledice.R
+import com.example.android.simpledice.database.AppDatabase
 import com.example.android.simpledice.utils.DiceResults
 import com.example.android.simpledice.utils.DiceRoll
 import com.example.android.simpledice.utils.RollAsyncTask
@@ -37,6 +38,8 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
     //InputConnection for custom keyboard
     private var mCommandInputConnection: InputConnection? = null
 
+    private var mDatabase : AppDatabase? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +52,8 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
         setupFavoriteRecyclerView()
 
         setupEditTextAndKeyboard()
+
+        setupDatabase()
 
     }
 
@@ -111,7 +116,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
         builder.setTitle(R.string.delete_dialog_title)
             .setMessage(R.string.delete_dialog_message)
             .setPositiveButton(R.string.delete_dialog_positive) { dialog, which ->
-                //TODO Delete DiceRoll from Room
+                mDatabase!!.diceRollDao().deleteDiceRoll(favoriteDiceRoll)
             }
             .setNegativeButton(R.string.delete_dialog_negative) { dialog, which -> dialog.cancel() }
             .show()
@@ -270,7 +275,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
     override fun handleRollResult(diceResults: DiceResults) {
         diceResults.saveToSharedPreferences(this)
         setDataToResultsViews(diceResults)
-        //TODO Save to Room
+        mDatabase!!.diceResultsDao().insertDiceResults(diceResults)
     }
 
     /**
@@ -279,5 +284,13 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
     private fun setupAds() {
         val adRequest = AdRequest.Builder().build()
         banner_ad.loadAd(adRequest)
+    }
+
+    /**
+     * A helper method for preparing access to the database, and populating views relevant to it
+     */
+    private fun setupDatabase() {
+        mDatabase = AppDatabase.getInstance(this)
+        //TODO Access Database and populate RecyclerView
     }
 }

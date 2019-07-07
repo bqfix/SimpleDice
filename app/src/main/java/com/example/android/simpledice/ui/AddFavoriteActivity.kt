@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuCompat
 import com.example.android.simpledice.R
+import com.example.android.simpledice.database.AppDatabase
 import com.example.android.simpledice.utils.Constants
 import com.example.android.simpledice.utils.DiceRoll
 import com.example.android.simpledice.utils.Utils
@@ -27,8 +28,10 @@ class AddFavoriteActivity : AppCompatActivity() {
 
     //Included DiceRoll variables
     private var editingFavorite: Boolean = false
-    private var mPreviousName: String? = null
-    private var mPreviousFormula: String? = null
+
+    private var mDatabase : AppDatabase? = null
+
+    private var mDiceRoll : DiceRoll? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +43,8 @@ class AddFavoriteActivity : AppCompatActivity() {
 
         setListeners()
         setupFormulaEditTextAndKeyboard()
+
+        setupDatabase()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -72,11 +77,18 @@ class AddFavoriteActivity : AppCompatActivity() {
         val formula = formula_input_et.text.toString()
         val (isValid, errorMessage, hasOverHundredDice) = Utils.isValidDiceRoll(this, formula)
         if (isValid) {
-            val diceRoll = DiceRoll(name = name, formula = formula, hasOverHundredDice = hasOverHundredDice)
             if (editingFavorite) {
-                //TODO Edit in Room
+                //Failsafe in case mDiceRoll is null for some reason, although it should not be
+                if (mDiceRoll == null){
+                    mDiceRoll = DiceRoll()
+                }
+                mDiceRoll!!.name == name
+                mDiceRoll!!.formula = formula
+                mDiceRoll!!.hasOverHundredDice == hasOverHundredDice
+                mDatabase!!.diceRollDao().updateDiceRoll(mDiceRoll!!)
             } else {
-                //TODO Save to Room
+                mDiceRoll = DiceRoll(name = name, formula = formula, hasOverHundredDice = hasOverHundredDice)
+                mDatabase!!.diceRollDao().insertDiceRoll(mDiceRoll!!)
             }
             Toast.makeText(this, R.string.saved_to_firebase, Toast.LENGTH_SHORT).show()
             finish()
@@ -184,11 +196,9 @@ class AddFavoriteActivity : AppCompatActivity() {
             setTitle(R.string.edit_favorite_activity_title)
 
             //Get DiceRoll and populate fields
-            val diceRoll = intent.getParcelableExtra<DiceRoll>(getString(R.string.dice_roll_parcelable_key))
-            mPreviousName = diceRoll.name
-            mPreviousFormula = diceRoll.formula
-            name_input_et.setText(mPreviousName)
-            formula_input_et.setText(mPreviousFormula)
+            mDiceRoll = intent.getParcelableExtra<DiceRoll>(getString(R.string.dice_roll_parcelable_key))
+            name_input_et.setText(mDiceRoll!!.name)
+            formula_input_et.setText(mDiceRoll!!.formula)
         } else {
             setTitle(R.string.add_favorite_activity_title)
         }
@@ -200,5 +210,12 @@ class AddFavoriteActivity : AppCompatActivity() {
     private fun setupAds() {
         val adRequest = AdRequest.Builder().build()
         banner_ad.loadAd(adRequest)
+    }
+
+    /**
+     * A helper method for preparing access to the database
+     */
+    private fun setupDatabase() {
+        mDatabase = AppDatabase.getInstance(this)
     }
 }

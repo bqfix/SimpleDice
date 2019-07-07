@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.simpledice.R
+import com.example.android.simpledice.database.AppDatabase
 import com.example.android.simpledice.utils.DiceResults
 import com.example.android.simpledice.utils.DiceRoll
 import com.example.android.simpledice.utils.RollAsyncTask
@@ -30,6 +31,8 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
 
     private var mDiceRolls: MutableList<DiceRoll>? = null
 
+    private var mDatabase: AppDatabase? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite)
@@ -45,6 +48,8 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
             val intent = Intent(this@FavoriteActivity, AddFavoriteActivity::class.java)
             startActivity(intent)
         }
+
+        setupDatabase()
 
         handleWidgetIntent()
 
@@ -85,7 +90,7 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
         builder.setTitle(R.string.delete_dialog_title)
             .setMessage(R.string.delete_dialog_message)
             .setPositiveButton(R.string.delete_dialog_positive) { dialog, which ->
-                //TODO Delete from Room
+                mDatabase!!.diceRollDao().deleteDiceRoll(favoriteDiceRoll)
             }
             .setNegativeButton(R.string.delete_dialog_negative) { dialog, which -> dialog.cancel() }
             .show()
@@ -149,7 +154,7 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
 
     /**
      * A helper method to handle Intents coming from the widget that contain a DiceRoll to be rolled
-     * Called in onCreate.
+     * Called in onCreate, must be called after database is setup, and after savedInstanceState is restored.
      */
     private fun handleWidgetIntent() {
         if (!widgetIntentHandled) {
@@ -163,14 +168,14 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
         }
     }
 
-    /** Override, for any given diceResults that occur from rolling a DiceRoll, up
+    /** Handling for any given diceResults that occur from rolling a DiceRoll
      *
      * @param diceResults to use
      */
     override fun handleRollResult(diceResults: DiceResults) {
         diceResults.saveToSharedPreferences(this)
         setDataToResultsViews(diceResults)
-        //TODO Save to Room
+        mDatabase!!.diceResultsDao().insertDiceResults(diceResults)
     }
 
     /** A helper method for handling saved instance states in onCreate
@@ -190,5 +195,13 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
     private fun setupAds() {
         val adRequest = AdRequest.Builder().build()
         banner_ad!!.loadAd(adRequest)
+    }
+
+    /**
+     * A helper method for preparing access to the database, and populating views relevant to it
+     */
+    private fun setupDatabase() {
+        mDatabase = AppDatabase.getInstance(this)
+        //TODO Access Database and populate RecyclerView
     }
 }
