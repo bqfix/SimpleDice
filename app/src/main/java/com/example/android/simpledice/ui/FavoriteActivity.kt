@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.simpledice.R
 import com.example.android.simpledice.database.AllDiceRollsViewModel
 import com.example.android.simpledice.database.AppDatabase
+import com.example.android.simpledice.database.AppExecutors
 import com.example.android.simpledice.utils.DiceResults
 import com.example.android.simpledice.utils.DiceRoll
 import com.example.android.simpledice.utils.RollAsyncTask
@@ -92,7 +93,9 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
         builder.setTitle(R.string.delete_dialog_title)
             .setMessage(R.string.delete_dialog_message)
             .setPositiveButton(R.string.delete_dialog_positive) { dialog, which ->
-                mDatabase!!.diceRollDao().deleteDiceRoll(favoriteDiceRoll)
+                AppExecutors.getInstance()!!.diskIO.execute {
+                    mDatabase!!.diceRollDao().deleteDiceRoll(favoriteDiceRoll)
+                }
             }
             .setNegativeButton(R.string.delete_dialog_negative) { dialog, which -> dialog.cancel() }
             .show()
@@ -177,7 +180,9 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
     override fun handleRollResult(diceResults: DiceResults) {
         diceResults.saveToSharedPreferences(this)
         setDataToResultsViews(diceResults)
-        mDatabase!!.diceResultsDao().insertDiceResults(diceResults)
+        AppExecutors.getInstance()!!.diskIO.execute {
+            mDatabase!!.diceResultsDao().insertDiceResults(diceResults)
+        }
     }
 
     /** A helper method for handling saved instance states in onCreate

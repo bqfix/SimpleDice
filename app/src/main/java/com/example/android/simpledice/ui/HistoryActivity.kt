@@ -14,6 +14,7 @@ import com.example.android.simpledice.R
 import com.example.android.simpledice.database.AllDiceResultsViewModel
 import com.example.android.simpledice.database.AllDiceRollsViewModel
 import com.example.android.simpledice.database.AppDatabase
+import com.example.android.simpledice.database.AppExecutors
 import com.example.android.simpledice.utils.DiceResults
 import com.google.android.gms.ads.AdRequest
 import kotlinx.android.synthetic.main.activity_history.*
@@ -112,7 +113,9 @@ class HistoryActivity : AppCompatActivity(), HistoryResultsAdapter.HistoryResult
      * A helper method that deletes all the user's history from Firebase, and empties all views on HistoryActivity
      */
     private fun clearAllHistory() {
-        mDatabase!!.diceResultsDao().deleteAllDiceResults()
+        AppExecutors.getInstance()!!.diskIO.execute {
+            mDatabase!!.diceResultsDao().deleteAllDiceResults()
+        }
 
         //Reset stored values and update RecyclerView to empty
         mDiceResults = ArrayList()

@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuCompat
 import com.example.android.simpledice.R
 import com.example.android.simpledice.database.AppDatabase
+import com.example.android.simpledice.database.AppExecutors
 import com.example.android.simpledice.utils.Constants
 import com.example.android.simpledice.utils.DiceRoll
 import com.example.android.simpledice.utils.Utils
@@ -85,10 +86,14 @@ class AddFavoriteActivity : AppCompatActivity() {
                 mDiceRoll!!.name == name
                 mDiceRoll!!.formula = formula
                 mDiceRoll!!.hasOverHundredDice == hasOverHundredDice
-                mDatabase!!.diceRollDao().updateDiceRoll(mDiceRoll!!)
+                AppExecutors.getInstance()!!.diskIO.execute {
+                    mDatabase!!.diceRollDao().updateDiceRoll(mDiceRoll!!)
+                }
             } else {
                 mDiceRoll = DiceRoll(name = name, formula = formula, hasOverHundredDice = hasOverHundredDice)
-                mDatabase!!.diceRollDao().insertDiceRoll(mDiceRoll!!)
+                AppExecutors.getInstance()!!.diskIO.execute {
+                    mDatabase!!.diceRollDao().insertDiceRoll(mDiceRoll!!)
+                }
             }
             Toast.makeText(this, R.string.saved_to_firebase, Toast.LENGTH_SHORT).show()
             finish()
