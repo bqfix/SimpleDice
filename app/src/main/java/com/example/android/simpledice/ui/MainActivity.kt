@@ -1,6 +1,5 @@
 package com.example.android.simpledice.ui
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -18,11 +17,11 @@ import android.view.inputmethod.InputConnection
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.example.android.simpledice.R
-import com.example.android.simpledice.utils.*
-import com.firebase.ui.auth.AuthUI
+import com.example.android.simpledice.utils.DiceResults
+import com.example.android.simpledice.utils.DiceRoll
+import com.example.android.simpledice.utils.RollAsyncTask
+import com.example.android.simpledice.utils.Utils
 import com.google.android.gms.ads.AdRequest
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.banner_ad.*
 import kotlinx.android.synthetic.main.main_edit_favorite.*
@@ -38,22 +37,10 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
     //InputConnection for custom keyboard
     private var mCommandInputConnection: InputConnection? = null
 
-    //Firebase variables
-    private var mUserID: String? = null
-    //Realtime Database
-    private var mFirebaseDatabase: FirebaseDatabase? = null
-    private var mBaseDatabaseReference: DatabaseReference? = null
-    private var mFavoriteChildEventListener: ChildEventListener? = null
-    //Auth
-    private var mFirebaseAuth: FirebaseAuth? = null
-    private var mAuthStateListener: FirebaseAuth.AuthStateListener? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        initializeFirebase()
 
         setupAds()
 
@@ -68,19 +55,6 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
     override fun onStart() {
         super.onStart()
         loadMostRecentDiceResults()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mFirebaseAuth!!.addAuthStateListener(mAuthStateListener!!)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        if (mAuthStateListener != null) {
-            mFirebaseAuth!!.removeAuthStateListener(mAuthStateListener!!)
-        }
-        detachDatabaseFavoritesReadListener()
     }
 
 
@@ -137,10 +111,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
         builder.setTitle(R.string.delete_dialog_title)
             .setMessage(R.string.delete_dialog_message)
             .setPositiveButton(R.string.delete_dialog_positive) { dialog, which ->
-                favoriteDiceRoll.deleteDiceRoll(
-                    mBaseDatabaseReference!!,
-                    mUserID!!
-                )
+                //TODO Delete DiceRoll from Room
             }
             .setNegativeButton(R.string.delete_dialog_negative) { dialog, which -> dialog.cancel() }
             .show()
@@ -233,17 +204,6 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
                 startActivity(intent)
                 return true
             }
-            R.id.action_sign_out -> {
-                val builder = AlertDialog.Builder(this@MainActivity)
-                builder.setTitle(R.string.sign_out_dialog_title)
-                    .setMessage(R.string.sign_out_dialog_message)
-                    .setPositiveButton(R.string.sign_out_dialog_positive) { dialog, which ->
-                        AuthUI.getInstance().signOut(this@MainActivity)
-                    }
-                    .setNegativeButton(R.string.sign_out_dialog_negative) { dialog, which -> dialog.cancel() }
-                builder.show()
-                return true
-            }
             else -> return super.onOptionsItemSelected(item)
         }
     }
@@ -292,136 +252,6 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
         super.onBackPressed()
     }
 
-    /**
-     * A helper method to handle all of the initial setup for Firebase, to be called in onCreate
-     */
-    private fun initializeFirebase() {
-        //Auth setup
-        mUserID = Constants.FIREBASE_ANONYMOUS
-        mFirebaseAuth = FirebaseAuth.getInstance()
-        mAuthStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
-            val user = firebaseAuth.currentUser
-            if (user != null) { //Signed in
-                onSignedInInitialize(user.uid)
-            } else { //Signed out, so launch sign in activity
-                onSignedOutCleanup()
-                startActivityForResult(
-                    AuthUI.getInstance()
-                        .createSignInIntentBuilder()
-                        .setIsSmartLockEnabled(false)
-                        .setAvailableProviders(
-                            listOf(
-                                AuthUI.IdpConfig.GoogleBuilder().build(),
-                                AuthUI.IdpConfig.EmailBuilder().build()
-                            )
-                        )
-                        .build(),
-                    Constants.REQUEST_CODE_SIGN_IN
-                )
-            }
-        }
-
-        //Database setup
-        mFirebaseDatabase = FirebaseDatabase.getInstance()
-        mBaseDatabaseReference = mFirebaseDatabase!!.reference
-    }
-
-    /**
-     * A helper method for when signed into FirebaseAuth
-     *
-     * @param userID to set the Activity's member variable
-     */
-    private fun onSignedInInitialize(userID: String) {
-        mUserID = userID
-        attachDatabaseFavoritesReadListener()
-    }
-
-    /**
-     * A helper method for when signed out of FirebaseAuth
-     */
-    private fun onSignedOutCleanup() {
-        mUserID = Constants.FIREBASE_ANONYMOUS
-        detachDatabaseFavoritesReadListener()
-
-        //Blank Favorites
-        mDiceRolls = ArrayList()
-        mFavoriteDiceRollAdapter!!.setFavoriteDiceRolls(mDiceRolls!!)
-
-        //Blank Results(by blanking SharedPreferences)
-        val sharedPreferences = getSharedPreferences(getString(R.string.shared_preferences_key), Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-
-        editor.putString(getString(R.string.dice_results_name_key), "")
-        editor.putString(getString(R.string.dice_results_descrip_key), "")
-        editor.putLong(getString(R.string.dice_results_total_key), 0)
-        editor.putLong(getString(R.string.dice_results_date_key), 0)
-        editor.apply()
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == Constants.REQUEST_CODE_SIGN_IN) { //Special logic for results coming from FirebaseUI sign-in
-            if (resultCode == Activity.RESULT_OK) {
-                Toast.makeText(this, R.string.sign_in_success, Toast.LENGTH_SHORT).show()
-            } else if (resultCode == Activity.RESULT_CANCELED) { //User canceled, finish(); to close app
-                finish()
-            }
-        }
-    }
-
-    /**
-     * A helper method for creating the database listener that checks Firebase for DiceRoll objects
-     */
-    private fun attachDatabaseFavoritesReadListener() {
-        mDiceRolls = ArrayList() //Reset mDiceRolls, or edits to the Database cause repeat data
-        if (mFavoriteChildEventListener == null) {
-            mFavoriteChildEventListener = object : ChildEventListener {
-                override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
-                    val diceRoll = dataSnapshot.getValue(DiceRoll::class.java)
-                    mDiceRolls!!.add(diceRoll!!)
-                    mFavoriteDiceRollAdapter!!.setFavoriteDiceRolls(mDiceRolls!!)
-                    Utils.updateAllWidgets(this@MainActivity, mDiceRolls!!)
-                }
-
-                override fun onChildChanged(dataSnapshot: DataSnapshot, s: String?) {
-
-                }
-
-                override fun onChildRemoved(dataSnapshot: DataSnapshot) {
-                    val deletedDiceRoll = dataSnapshot.getValue(DiceRoll::class.java)
-                    for (diceRoll in mDiceRolls!!) {
-                        if (deletedDiceRoll!!.name == diceRoll.name && deletedDiceRoll.formula == diceRoll.formula) { //If the name and formula match, delete it
-                            mDiceRolls!!.remove(diceRoll)
-                            mFavoriteDiceRollAdapter!!.setFavoriteDiceRolls(mDiceRolls!!)
-                            Utils.updateAllWidgets(this@MainActivity, mDiceRolls!!)
-                            break //Prevent removing more than one diceRoll
-                        }
-                    }
-                }
-
-                override fun onChildMoved(dataSnapshot: DataSnapshot, s: String?) {
-
-                }
-
-                override fun onCancelled(databaseError: DatabaseError) {
-
-                }
-            }
-            mBaseDatabaseReference!!.child(Constants.FIREBASE_DATABASE_FAVORITES_PATH).child(mUserID!!)
-                .addChildEventListener(mFavoriteChildEventListener!!)
-        }
-    }
-
-    /**
-     * A helper method to clear the database listener
-     */
-    private fun detachDatabaseFavoritesReadListener() {
-        if (mFavoriteChildEventListener != null) {
-            mBaseDatabaseReference!!.child(Constants.FIREBASE_DATABASE_FAVORITES_PATH).child(mUserID!!)
-                .removeEventListener(mFavoriteChildEventListener!!)
-            mFavoriteChildEventListener = null
-        }
-    }
 
     /**
      * Override, for any given diceResults that occur from rolling a DiceRoll
@@ -431,7 +261,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
     override fun handleRollResult(diceResults: DiceResults) {
         diceResults.saveToSharedPreferences(this)
         setDataToResultsViews(diceResults)
-        diceResults.saveToFirebaseHistory(mBaseDatabaseReference!!, mUserID!!)
+        //TODO Save to Room
     }
 
     /**

@@ -11,12 +11,4 @@
             app:showAsAction="ifRoom" />
     </group>
 
-    <group
-        android:id="@+id/group_sign_out">
-        <item
-            android:id="@+id/action_sign_out"
-            android:title="@string/sign_out_menu"
-            app:showAsAction="never" />
-    </group>
-
 </menu>

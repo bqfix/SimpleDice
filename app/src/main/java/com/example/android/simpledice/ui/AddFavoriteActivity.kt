@@ -1,51 +1,29 @@
 package com.example.android.simpledice.ui
 
 import android.content.Context
-import android.content.DialogInterface
-import android.content.Intent
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.view.MenuCompat
-import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
-
+import com.example.android.simpledice.R
 import com.example.android.simpledice.utils.Constants
 import com.example.android.simpledice.utils.DiceRoll
-import com.example.android.simpledice.R
-import com.example.android.simpledice.utils.DiceValidity
 import com.example.android.simpledice.utils.Utils
-import com.firebase.ui.auth.AuthUI
 import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_add_favorite.*
 import kotlinx.android.synthetic.main.banner_ad.*
 
 class AddFavoriteActivity : AppCompatActivity() {
 
     private var mInputConnection: InputConnection? = null
-
-    //Firebase
-    private var mUserId: String? = null
-    private var mFirebaseAuth: FirebaseAuth? = null
-    private var mAuthStateListener: FirebaseAuth.AuthStateListener? = null
-    //Database
-    private var mFirebaseDatabase: FirebaseDatabase? = null
-    private var mBaseDatabaseReference: DatabaseReference? = null
 
     //Included DiceRoll variables
     private var editingFavorite: Boolean = false
@@ -60,22 +38,8 @@ class AddFavoriteActivity : AppCompatActivity() {
 
         checkForIncludedDiceRoll()
 
-        initializeFirebase()
-
         setListeners()
         setupFormulaEditTextAndKeyboard()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mFirebaseAuth!!.addAuthStateListener(mAuthStateListener!!)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        if (mAuthStateListener != null) {
-            mFirebaseAuth!!.removeAuthStateListener(mAuthStateListener!!)
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -89,17 +53,6 @@ class AddFavoriteActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.action_done -> {
                 saveNewFavorite()
-                return true
-            }
-            R.id.action_sign_out -> {
-                val builder = AlertDialog.Builder(this@AddFavoriteActivity)
-                builder.setTitle(R.string.sign_out_dialog_title)
-                    .setMessage(R.string.sign_out_dialog_message)
-                    .setPositiveButton(R.string.sign_out_dialog_positive) { dialog, which ->
-                        AuthUI.getInstance().signOut(this@AddFavoriteActivity)
-                    }
-                    .setNegativeButton(R.string.sign_out_dialog_negative) { dialog, which -> dialog.cancel() }
-                builder.show()
                 return true
             }
             else -> return super.onOptionsItemSelected(item)
@@ -121,14 +74,9 @@ class AddFavoriteActivity : AppCompatActivity() {
         if (isValid) {
             val diceRoll = DiceRoll(name, formula, hasOverHundredDice)
             if (editingFavorite) {
-                diceRoll.editSavedFirebaseFavorite(
-                    mBaseDatabaseReference!!,
-                    mUserId!!,
-                    mPreviousName!!,
-                    mPreviousFormula!!
-                )
+                //TODO Edit in Room
             } else {
-                diceRoll.saveNewToFirebaseFavorites(mBaseDatabaseReference!!, mUserId!!) //Simply save
+                //TODO Save to Room
             }
             Toast.makeText(this, R.string.saved_to_firebase, Toast.LENGTH_SHORT).show()
             finish()
@@ -223,28 +171,6 @@ class AddFavoriteActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    /**
-     * A helper method to handle all of the initial setup for Firebase, to be called in onCreate
-     */
-    private fun initializeFirebase() {
-        //Auth setup
-        mFirebaseAuth = FirebaseAuth.getInstance()
-
-        mAuthStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
-            val user = firebaseAuth.currentUser
-            if (user != null) { //Signed in
-                mUserId = user.uid
-            } else { //Signed out, finish activity
-                mUserId = null
-                finish()
-            }
-        }
-
-        //Database
-        mFirebaseDatabase = FirebaseDatabase.getInstance()
-        mBaseDatabaseReference = mFirebaseDatabase!!.reference
     }
 
     /**
