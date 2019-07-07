@@ -1,6 +1,6 @@
 package com.example.android.simpledice.ui
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +9,7 @@ import com.example.android.simpledice.R
 import com.example.android.simpledice.utils.DiceResults
 
 class HistoryResultsAdapter internal constructor(private val mHistoryResultsClickHandler: HistoryResultsClickHandler) :
-    RecyclerView.Adapter<HistoryResultsAdapter.HistoryResultsViewHolder>() {
+    androidx.recyclerview.widget.RecyclerView.Adapter<HistoryResultsAdapter.HistoryResultsViewHolder>() {
 
     private var mHistoryResults: List<DiceResults>? = null
 
@@ -21,7 +21,7 @@ class HistoryResultsAdapter internal constructor(private val mHistoryResultsClic
         var mNameTextView: TextView? = null,
         var mDateTextView: TextView? = null,
         var mTotalTextView: TextView? = null
-    ) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    ) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
         init {
 

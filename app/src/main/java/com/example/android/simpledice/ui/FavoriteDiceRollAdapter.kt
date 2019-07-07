@@ -1,7 +1,7 @@
 package com.example.android.simpledice.ui
 
 import android.content.Intent
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +15,7 @@ import com.example.android.simpledice.utils.DiceRoll
 class FavoriteDiceRollAdapter internal constructor(
     private val mFavoriteDiceRollClickHandler: FavoriteDiceRollClickHandler,
     private val mDeleteDiceRollClickHandler: DeleteDiceRollClickHandler
-) : RecyclerView.Adapter<FavoriteDiceRollAdapter.FavoriteDiceRollViewHolder>() {
+) : androidx.recyclerview.widget.RecyclerView.Adapter<FavoriteDiceRollAdapter.FavoriteDiceRollViewHolder>() {
 
     private var mFavoriteDiceRolls: List<DiceRoll>? = null
 
@@ -27,7 +27,7 @@ class FavoriteDiceRollAdapter internal constructor(
         internal var mNameTextView: TextView? = null,
         internal var mDescripTextView: TextView? = null,
         internal var mMoreButton: ImageButton? = null
-    ) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    ) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
 
         init {

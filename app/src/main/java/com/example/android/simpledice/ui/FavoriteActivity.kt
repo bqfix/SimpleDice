@@ -2,11 +2,11 @@ package com.example.android.simpledice.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.view.MenuCompat
-import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
+import androidx.core.view.MenuCompat
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import com.example.android.simpledice.R
@@ -94,13 +94,22 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
      * Helper method to setup RecyclerView, should only be called once in onCreate
      */
     private fun setupRecyclerView() {
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
+            this,
+            androidx.recyclerview.widget.LinearLayoutManager.VERTICAL,
+            false
+        )
         favorite_rv.layoutManager = layoutManager
 
         mFavoriteDiceRollAdapter = FavoriteDiceRollAdapter(this, this)
         favorite_rv.adapter = mFavoriteDiceRollAdapter
 
-        favorite_rv.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        favorite_rv.addItemDecoration(
+            androidx.recyclerview.widget.DividerItemDecoration(
+                this,
+                androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
+            )
+        )
 
         if (mDiceRolls == null) {
             mDiceRolls = ArrayList()

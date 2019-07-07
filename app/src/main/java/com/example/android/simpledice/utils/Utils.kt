@@ -3,7 +3,7 @@ package com.example.android.simpledice.utils
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
-import android.support.v4.util.Pair
+import androidx.core.util.Pair
 import com.example.android.simpledice.R
 import com.example.android.simpledice.widget.FavoritesWidget
 import java.util.*

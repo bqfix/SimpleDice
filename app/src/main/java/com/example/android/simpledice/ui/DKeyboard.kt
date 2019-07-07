@@ -2,7 +2,7 @@ package com.example.android.simpledice.ui
 
 import android.content.Context
 import android.os.Handler
-import android.support.constraint.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.util.SparseArray

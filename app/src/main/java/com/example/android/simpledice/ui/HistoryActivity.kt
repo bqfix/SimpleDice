@@ -1,11 +1,11 @@
 package com.example.android.simpledice.ui
 
 import android.os.Bundle
-import android.support.v4.view.MenuCompat
-import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
+import androidx.core.view.MenuCompat
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import com.example.android.simpledice.R
@@ -76,13 +76,22 @@ class HistoryActivity : AppCompatActivity(), HistoryResultsAdapter.HistoryResult
      * Helper method to setup HistoryRecyclerView, should only be called once in onCreate
      */
     private fun setupHistoryRecyclerView() {
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
+            this,
+            androidx.recyclerview.widget.LinearLayoutManager.VERTICAL,
+            false
+        )
         history_rv.layoutManager = layoutManager
 
         mHistoryAdapter = HistoryResultsAdapter(this)
         history_rv.adapter = mHistoryAdapter
 
-        history_rv.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        history_rv.addItemDecoration(
+            androidx.recyclerview.widget.DividerItemDecoration(
+                this,
+                androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
+            )
+        )
 
         if (mDiceResults == null) {
             mDiceResults = ArrayList()
