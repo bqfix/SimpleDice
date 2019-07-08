@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dicey Dice</string>
+    <string name="app_name">Simple Dice</string>
 
     <!-- Shared -->
     <string name="info_button">Info</string>
@@ -105,7 +105,7 @@
         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</string>
 
     <!-- Ads -->
-    <string name="admob_app_id" translatable="false">ca-app-pub-3686302874318115~3664776718</string>
-    <string name="admob_banner_id" translatable="false">ca-app-pub-3686302874318115/9080754927</string>
+    <string name="admob_app_id" translatable="false">ca-app-pub-3686302874318115~6862559778</string>
+    <string name="admob_banner_id" translatable="false">ca-app-pub-3686302874318115/6155202512</string>
     <string name="admob_test_banner_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
 </resources>
