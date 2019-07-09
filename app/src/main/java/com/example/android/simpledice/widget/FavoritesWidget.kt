@@ -9,6 +9,8 @@ import android.net.Uri
 import android.widget.RemoteViews
 
 import com.example.android.simpledice.R
+import com.example.android.simpledice.database.AppDatabase
+import com.example.android.simpledice.database.AppExecutors
 import com.example.android.simpledice.ui.FavoriteActivity
 import com.example.android.simpledice.utils.DiceRoll
 import com.example.android.simpledice.utils.Utils
@@ -21,9 +23,12 @@ import java.util.ArrayList
 class FavoritesWidget : AppWidgetProvider() {
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
-        //This diceRolls is blank, because the onUpdate method should never be called.  Rather, updates occur from the above updateAppWidget method being called by changes in the app.
-        val diceRolls = ArrayList<DiceRoll>()
-        updateAppWidget(context, appWidgetManager, appWidgetIds, diceRolls)
+        //This diceRolls should only be called when the widget is first created, timed updates do not occur
+        AppExecutors.getInstance()!!.diskIO.execute{
+            val diceRolls = AppDatabase.getInstance(context)!!.diceRollDao().loadAllDiceRollsForWidget()
+            updateAppWidget(context, appWidgetManager, appWidgetIds, diceRolls)
+        }
+
 
     }
 

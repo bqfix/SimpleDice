@@ -11,6 +11,9 @@ interface DiceRollDao {
     @Query("SELECT * FROM ${Constants.DICE_ROLL_TABLE_NAME} ORDER BY databaseId")
     fun loadAllDiceRolls() : LiveData<List<DiceRoll>>
 
+    @Query("SELECT * FROM ${Constants.DICE_ROLL_TABLE_NAME} ORDER BY databaseId")
+    fun loadAllDiceRollsForWidget() : List<DiceRoll>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertDiceRoll(diceRoll: DiceRoll)
 

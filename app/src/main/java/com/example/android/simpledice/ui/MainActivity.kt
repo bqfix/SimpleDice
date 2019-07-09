@@ -307,6 +307,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
                 mDiceRolls!!.add(diceRoll)
             }
             mFavoriteDiceRollAdapter!!.setFavoriteDiceRolls(mDiceRolls!!)
+            Utils.updateAllWidgets(this@MainActivity, mDiceRolls!!)
         })
     }
 }
