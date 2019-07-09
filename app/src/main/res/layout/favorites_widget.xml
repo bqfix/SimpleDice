@@ -1,38 +1,38 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorBackground"
-    android:padding="@dimen/widget_margin"
-    android:orientation="vertical"
-    >
-
-    <TextView
-        android:id="@+id/widget_title_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:gravity="center_horizontal"
-        android:contentDescription="@string/widget_title"
-        android:text="@string/widget_title"
-        android:textSize="24sp"
-        android:textStyle="bold|italic"
-        style="@style/header_style"
-        android:textColor="@android:color/white"
-        android:background="@color/colorPrimaryDark"/>
-
-    <ListView
-        android:id="@+id/widget_favorites_lv"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp"/>
-
-    <TextView
-        android:id="@+id/widget_empty"
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"
-        android:text="@string/no_favorites_found"
-        style="@style/basic_text_style"/>
+        android:background="@color/colorBackground"
+        android:padding="@dimen/widget_margin"
+        android:orientation="vertical">
+
+    <TextView
+            android:id="@+id/widget_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:gravity="center_horizontal"
+            android:contentDescription="@string/widget_title"
+            android:text="@string/widget_title"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            style="@style/header_style"
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimaryDark"/>
+
+    <ListView
+            android:id="@+id/widget_favorites_lv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp"/>
+
+    <TextView
+            android:id="@+id/widget_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:text="@string/no_favorites_found"
+            style="@style/basic_text_style"/>
 </LinearLayout>

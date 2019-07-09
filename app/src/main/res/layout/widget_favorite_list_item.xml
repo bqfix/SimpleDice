@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:background="@color/colorBackground"
-    android:id="@+id/widget_list_item_ll">
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorBackground"
+        android:id="@+id/widget_list_item_ll">
 
     <TextView
-        android:id="@+id/widget_item_name_tv"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="bottom"
-        tools:text="A Favorite Name"
-        style="@style/header_style"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        />
+            android:id="@+id/widget_item_name_tv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            tools:text="A Favorite Name"
+            style="@style/header_style"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+    />
 
     <TextView
-        android:id="@+id/widget_item_formula_tv"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="top"
-        style="@style/basic_text_style"
-        tools:text="6d6+1"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        />
+            android:id="@+id/widget_item_formula_tv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="top"
+            style="@style/basic_text_style"
+            tools:text="6d6+1"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+    />
 </LinearLayout>
