@@ -3,6 +3,7 @@ package com.example.android.simpledice.ui
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuCompat
@@ -19,6 +20,7 @@ import com.example.android.simpledice.utils.DiceResults
 import com.google.android.gms.ads.AdRequest
 import kotlinx.android.synthetic.main.activity_history.*
 import kotlinx.android.synthetic.main.banner_ad.*
+import kotlinx.android.synthetic.main.favorite_recycler_view.*
 import kotlinx.android.synthetic.main.results.*
 import java.util.*
 
@@ -143,11 +145,20 @@ class HistoryActivity : AppCompatActivity(), HistoryResultsAdapter.HistoryResult
 
         val viewModel = ViewModelProviders.of(this).get(AllDiceResultsViewModel::class.java)
         viewModel.diceResults!!.observe(this, androidx.lifecycle.Observer { databaseDiceResults ->
+
+            //Hide Recycler, show ProgressBar
+            history_rv.visibility = View.GONE
+            history_progress_bar.visibility = View.VISIBLE
+
             mDiceResults = arrayListOf() //Clear and repopulate mDiceRolls
             for (diceResults in databaseDiceResults) {
                 mDiceResults!!.add(diceResults)
             }
             mHistoryAdapter!!.setHistoryResults(mDiceResults!!)
+
+            //Show Recycler, hide ProgressBar
+            history_rv.visibility = View.VISIBLE
+            history_progress_bar.visibility = View.GONE
         })
     }
 }
