@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuCompat
@@ -20,8 +21,10 @@ import com.example.android.simpledice.utils.DiceRoll
 import com.example.android.simpledice.utils.RollAsyncTask
 import com.example.android.simpledice.utils.Utils
 import com.google.android.gms.ads.AdRequest
+import kotlinx.android.synthetic.main.activity_favorite.*
 import kotlinx.android.synthetic.main.banner_ad.*
 import kotlinx.android.synthetic.main.favorite_recycler_view.*
+import kotlinx.android.synthetic.main.main_edit_favorite.*
 import kotlinx.android.synthetic.main.results.*
 import java.util.*
 
@@ -212,12 +215,21 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
 
         val viewModel = ViewModelProviders.of(this).get(AllDiceRollsViewModel::class.java)
         viewModel.diceRolls!!.observe(this, androidx.lifecycle.Observer { diceRolls ->
+
+            //Hide Recycler, show ProgressBar
+            favorite_rv.visibility = View.GONE
+            favorite_progress_bar.visibility = View.VISIBLE
+
             mDiceRolls = arrayListOf() //Clear and repopulate mDiceRolls
             for (diceRoll in diceRolls) {
                 mDiceRolls!!.add(diceRoll)
             }
             mFavoriteDiceRollAdapter!!.setFavoriteDiceRolls(mDiceRolls!!)
             Utils.updateAllWidgets(this@FavoriteActivity, mDiceRolls!!)
+
+            //Show Recycler, hide ProgressBar
+            favorite_rv.visibility = View.VISIBLE
+            favorite_progress_bar.visibility = View.GONE
         })
     }
 }
