@@ -160,7 +160,12 @@ class AddFavoriteActivity : AppCompatActivity() {
      * A helper method to setup the Formula EditText and Keyboard, to be called once in onCreate
      */
     private fun setupFormulaEditTextAndKeyboard() {
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) { //Use custom keyboard if the Android version is over 21 (this is when showSoftInputOnFocus was implemented)
+        //Check SharedPreferences for user's preference (assume true if not found)
+        val useDKeyboard =
+            getSharedPreferences(getString(R.string.shared_preferences_key), Context.MODE_PRIVATE)
+                .getBoolean(getString(R.string.use_d_keyboard_key), true)
+
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP && useDKeyboard) { //Use custom keyboard if the Android version is over 21 (this is when showSoftInputOnFocus was implemented)
             formula_input_et.showSoftInputOnFocus = false
 
             mInputConnection = formula_input_et.onCreateInputConnection(EditorInfo())
@@ -181,6 +186,15 @@ class AddFavoriteActivity : AppCompatActivity() {
                 }
             }
         } else { //Use basic system keyboard
+
+            //Hide Custom Keyboard if visible, and enable system keyboard (if Android version > 21)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                if (d_keyboard.visibility == View.VISIBLE) {
+                    hideCustomKeyboard()
+                }
+                formula_input_et.showSoftInputOnFocus = true
+            }
+
             formula_input_et.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
                 //FocusChange listener to minimize keyboard when clicking outside of EditText
                 if (!hasFocus) {

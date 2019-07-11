@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
     //InputConnection for custom keyboard
     private var mCommandInputConnection: InputConnection? = null
 
-    private var mDatabase : AppDatabase? = null
+    private var mDatabase: AppDatabase? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -231,7 +231,12 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
      * A helper method to setup the EditText and Keyboard, to be called once in onCreate
      */
     private fun setupEditTextAndKeyboard() {
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) { //Use custom keyboard if the Android version is over 21 (this is when showSoftInputOnFocus was implemented)
+        //Check SharedPreferences for user's preference (assume true if not found)
+        val useDKeyboard =
+            getSharedPreferences(getString(R.string.shared_preferences_key), Context.MODE_PRIVATE)
+                .getBoolean(getString(R.string.use_d_keyboard_key), true)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && useDKeyboard) { //Use custom keyboard if the Android version is over 21 (this is when showSoftInputOnFocus was implemented)
             command_input_et.showSoftInputOnFocus = false
 
             mCommandInputConnection = command_input_et.onCreateInputConnection(EditorInfo())
@@ -253,6 +258,15 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
                 }
             }
         } else { //Use basic system keyboard
+
+            //Hide Custom Keyboard if visible, and enable system keyboard (if Android version > 21)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                if (d_keyboard.visibility == View.VISIBLE) {
+                    hideCustomKeyboard()
+                }
+                command_input_et.showSoftInputOnFocus = true
+            }
+
             command_input_et.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
                 //FocusChange listener to minimize keyboard when clicking outside of EditText
                 if (!hasFocus) {
