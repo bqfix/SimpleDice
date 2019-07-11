@@ -1,6 +1,7 @@
 package com.example.android.simpledice.ui
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Build
@@ -69,6 +70,11 @@ class AddFavoriteActivity : AppCompatActivity(), SharedPreferences.OnSharedPrefe
         when (item.itemId) {
             R.id.action_done -> {
                 saveNewFavorite()
+                return true
+            }
+            R.id.action_settings -> {
+                val settingsIntent = Intent(this@AddFavoriteActivity, SettingsActivity::class.java)
+                startActivity(settingsIntent)
                 return true
             }
             else -> return super.onOptionsItemSelected(item)

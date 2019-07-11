@@ -1,5 +1,6 @@
 package com.example.android.simpledice.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -62,6 +63,11 @@ class HistoryActivity : AppCompatActivity(), HistoryResultsAdapter.HistoryResult
                     .setPositiveButton(R.string.delete_all_dialog_positive) { dialog, which -> clearAllHistory() }
                     .setNegativeButton(R.string.delete_all_dialog_negative) { dialog, which -> dialog.cancel() }
                 deleteHistoryBuilder.show()
+                return true
+            }
+            R.id.action_settings -> {
+                val settingsIntent = Intent(this@HistoryActivity, SettingsActivity::class.java)
+                startActivity(settingsIntent)
                 return true
             }
             else -> return super.onOptionsItemSelected(item)

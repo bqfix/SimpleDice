@@ -155,6 +155,11 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
                 startActivity(intent)
                 return true
             }
+            R.id.action_settings -> {
+                val settingsIntent = Intent(this@FavoriteActivity, SettingsActivity::class.java)
+                startActivity(settingsIntent)
+                return true
+            }
             else -> return super.onOptionsItemSelected(item)
         }
     }
