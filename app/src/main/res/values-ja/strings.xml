@@ -38,15 +38,15 @@
     <string name="roll_button">振る</string>
     <string name="saved_to_firebase">保存しました。</string>
     <string name="sign_in_success">サインインしました。</string>
-    <string name="sign_out_menu">サインアウト</string>
     <string name="too_many_dice">エラー：一気にダイス100000個以上はふれません。</string>
     <string name="widget_title">お気に入り</string>
     <string name="no_favorites_found">クリックしてアプリを開けて再読み込みしてください。</string>
     <string name="name_contains_invalid_characters">名前には:または%入力できません。</string>
     <string name="about">アプリについて</string>
     <string name="about_license_header">ライセンス</string>
-    <string name="sign_out_dialog_message">サインアウトしますか？</string>
-    <string name="sign_out_dialog_title">サインアウト</string>
-    <string name="sign_out_dialog_positive">サインアウト</string>
-    <string name="sign_out_dialog_negative">キャンセル</string>
+    <string name="settings_menu_action">設定</string>
+    <string name="title_activity_settings">設定</string>
+    <string name="d_keyboard_off">システムキーボード使用中</string>
+    <string name="d_keyboard_on">アプリキーボード使用中</string>
+    <string name="d_keyboard_pref_description">アプリのキーボード使用？</string>
 </resources>
