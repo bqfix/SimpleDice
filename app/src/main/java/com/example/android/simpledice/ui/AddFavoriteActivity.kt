@@ -1,6 +1,7 @@
 package com.example.android.simpledice.ui
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
@@ -24,7 +25,7 @@ import com.google.android.gms.ads.AdRequest
 import kotlinx.android.synthetic.main.activity_add_favorite.*
 import kotlinx.android.synthetic.main.banner_ad.*
 
-class AddFavoriteActivity : AppCompatActivity() {
+class AddFavoriteActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
 
     private var mInputConnection: InputConnection? = null
 
@@ -44,9 +45,17 @@ class AddFavoriteActivity : AppCompatActivity() {
         checkForIncludedDiceRoll()
 
         setListeners()
+
         setupFormulaEditTextAndKeyboard()
 
+        registerOnSharedPreferenceChangeListener()
+
         setupDatabase()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterOnSharedPreferenceChangeListener()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -196,6 +205,9 @@ class AddFavoriteActivity : AppCompatActivity() {
                 formula_input_et.showSoftInputOnFocus = true
             }
 
+            //Clear previous onClickListener
+            formula_input_et.setOnClickListener(null)
+
             formula_input_et.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
                 //FocusChange listener to minimize keyboard when clicking outside of EditText
                 if (!hasFocus) {
@@ -237,5 +249,31 @@ class AddFavoriteActivity : AppCompatActivity() {
      */
     private fun setupDatabase() {
         mDatabase = AppDatabase.getInstance(this)
+    }
+
+    /**
+     * Override to re-do the keyboard to use when the relevant preference changes
+     */
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        if (key != null && key == getString(R.string.use_d_keyboard_key)){
+            setupFormulaEditTextAndKeyboard()
+        }
+    }
+
+    /**
+     * Called in onCreate to register the OnSharedPreferenceChangeListener that listens for keyboard preference changes
+     */
+    fun registerOnSharedPreferenceChangeListener(){
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        sharedPreferences.registerOnSharedPreferenceChangeListener(this)
+    }
+
+
+    /**
+     * Called in onDestroy to unregister the OnSharedPreferenceChangeListener that listens for keyboard preference changes
+     */
+    fun unregisterOnSharedPreferenceChangeListener(){
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
     }
 }
