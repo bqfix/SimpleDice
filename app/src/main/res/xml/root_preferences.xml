@@ -1,0 +1,13 @@
+<androidx.preference.PreferenceScreen
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreferenceCompat
+            app:key="@string/use_d_keyboard_key"
+            app:title="@string/d_keyboard_pref_description"
+            app:summaryOn="@string/d_keyboard_on"
+            app:summaryOff="@string/d_keyboard_off"
+            app:defaultValue="true"
+    />
+
+
+</androidx.preference.PreferenceScreen>

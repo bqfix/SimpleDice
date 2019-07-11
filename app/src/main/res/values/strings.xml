@@ -8,7 +8,10 @@
     <string name="command_input_hint">Input a command.</string>
     <string name="history_menu_action">History</string>
     <string name="formula_edittext_allowed_digits" translatable="false">0123456789 +-dD</string>
-    <string name="help_formula_advice">Formula must include only numbers, spaces, + and &#8211; symbols, and the letter \'d\'.  First section must NOT be negative.  Cannot randomize numbers over 1000000.  Examples include:\n\n6\n1d6\n2d8 &#8211; 1\n1d4&#8211;1d4+1d4&#8211;1d4</string> <!-- &#8211; is for en dash -->
+    <string name="help_formula_advice">Formula must include only numbers, spaces, + and &#8211; symbols, and the letter
+        \'d\'. First section must NOT be negative. Cannot randomize numbers over 1000000. Examples
+        include:\n\n6\n1d6\n2d8 &#8211; 1\n1d4&#8211;1d4+1d4&#8211;1d4
+    </string> <!-- &#8211; is for en dash -->
     <string name="help_header">Advice</string>
     <string name="sign_out_menu">Sign out</string>
     <string name="edit">Edit</string>
@@ -64,7 +67,7 @@
 
     <!-- Formula Errors -->
     <string name="invalid_characters">Error: Input contains invalid characters.</string>
-    <string name="incorrectly_formatted_section">Error: A section is incorrectly formatted. </string>
+    <string name="incorrectly_formatted_section">Error: A section is incorrectly formatted.</string>
     <string name="too_many_dice">Error: Each dice roll must have less than 100000 dice.</string>
     <string name="no_error">No errors.</string>
     <string name="name_contains_invalid_characters">Name cannot contain : or %</string>
@@ -90,7 +93,8 @@
     <string name="widget_dice_roll_parcelable_key" translatable="false">widget_dice_roll_parcelable_key</string>
     <string name="widget_title">Favorites</string>
     <string name="no_favorites_found">Click to refresh/launch favorites.</string>
-    <string name="widget_favorites_intent_parcelable_key" translatable="false">widget_favorites_intent_parcelable_key</string>
+    <string name="widget_favorites_intent_parcelable_key" translatable="false">widget_favorites_intent_parcelable_key
+    </string>
 
     <!-- AboutActivity -->
     <string name="about">About</string>
@@ -99,14 +103,31 @@
         \n\n
         Copyright © 2019 Benjamin Quimado Fix
         \n\n
-        Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+        Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+        documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+        the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+        to permit persons to whom the Software is furnished to do so, subject to the following conditions:
         \n\n
-        The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+        The above copyright notice and this permission notice shall be included in all copies or substantial portions of
+        the Software.
         \n\n
-        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</string>
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+        THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+        CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+        DEALINGS IN THE SOFTWARE.
+    </string>
 
     <!-- Ads -->
     <string name="admob_app_id" translatable="false">ca-app-pub-3686302874318115~6862559778</string>
     <string name="admob_banner_id" translatable="false">ca-app-pub-3686302874318115/6155202512</string>
     <string name="admob_test_banner_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+
+    <!-- Settings Activity -->
+    <string name="title_activity_settings">Settings</string>
+    <string name="d_keyboard_pref_description">Use App Keyboard for Formula Input</string>
+    <string name="d_keyboard_on">Using App Keyboard</string>
+    <string name="d_keyboard_off">Using Default Keyboard</string>
+
+
 </resources>

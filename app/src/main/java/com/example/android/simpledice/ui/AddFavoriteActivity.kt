@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -162,7 +163,7 @@ class AddFavoriteActivity : AppCompatActivity() {
     private fun setupFormulaEditTextAndKeyboard() {
         //Check SharedPreferences for user's preference (assume true if not found)
         val useDKeyboard =
-            getSharedPreferences(getString(R.string.shared_preferences_key), Context.MODE_PRIVATE)
+            PreferenceManager.getDefaultSharedPreferences(this)
                 .getBoolean(getString(R.string.use_d_keyboard_key), true)
 
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP && useDKeyboard) { //Use custom keyboard if the Android version is over 21 (this is when showSoftInputOnFocus was implemented)
