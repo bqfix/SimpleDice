@@ -2,6 +2,7 @@ package com.example.android.simpledice.ui
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -34,7 +35,7 @@ import kotlinx.android.synthetic.main.results.*
 import java.util.*
 
 class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRollClickHandler,
-    FavoriteDiceRollAdapter.DeleteDiceRollClickHandler, RollAsyncTask.RollAsyncPostExecute {
+    FavoriteDiceRollAdapter.DeleteDiceRollClickHandler, RollAsyncTask.RollAsyncPostExecute, SharedPreferences.OnSharedPreferenceChangeListener {
 
     private var mFavoriteDiceRollAdapter: FavoriteDiceRollAdapter? = null
     private var mDiceRolls: MutableList<DiceRoll>? = null
@@ -57,6 +58,8 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
 
         setupEditTextAndKeyboard()
 
+        registerOnSharedPreferenceChangeListener()
+
         setupDatabaseAndViewModel()
 
     }
@@ -64,6 +67,11 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
     override fun onStart() {
         super.onStart()
         loadMostRecentDiceResults()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterOnSharedPreferenceChangeListener()
     }
 
 
@@ -219,6 +227,11 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
                 startActivity(aboutIntent)
                 return true
             }
+            R.id.action_settings -> {
+                val settingsIntent = Intent(this@MainActivity, SettingsActivity::class.java)
+                startActivity(settingsIntent)
+                return true
+            }
             R.id.action_history -> {
                 val intent = Intent(this@MainActivity, HistoryActivity::class.java)
                 startActivity(intent)
@@ -267,6 +280,9 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
                 }
                 command_input_et.showSoftInputOnFocus = true
             }
+
+            //Clear the old onClickListener if it exists
+            command_input_et.setOnClickListener(null)
 
             command_input_et.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
                 //FocusChange listener to minimize keyboard when clicking outside of EditText
@@ -334,5 +350,31 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
             main_favorite_rv.visibility = View.VISIBLE
             main_progress_bar.visibility = View.GONE
         })
+    }
+
+    /**
+     * Override to re-do the keyboard to use when the relevant preference changes
+     */
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        if (key != null && key == getString(R.string.use_d_keyboard_key)){
+            setupEditTextAndKeyboard()
+        }
+    }
+
+    /**
+     * Called in onCreate to register the OnSharedPreferenceChangeListener that listens for keyboard preference changes
+     */
+    fun registerOnSharedPreferenceChangeListener(){
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        sharedPreferences.registerOnSharedPreferenceChangeListener(this)
+    }
+
+
+    /**
+     * Called in onDestroy to unregister the OnSharedPreferenceChangeListener that listens for keyboard preference changes
+     */
+    fun unregisterOnSharedPreferenceChangeListener(){
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
     }
 }

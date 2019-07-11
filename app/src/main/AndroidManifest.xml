@@ -13,7 +13,8 @@
             android:theme="@style/AppTheme">
         <activity
                 android:name=".ui.SettingsActivity"
-                android:label="@string/title_activity_settings">
+                android:label="@string/title_activity_settings"
+        android:parentActivityName=".ui.MainActivity">
         </activity>
 
         <meta-data
