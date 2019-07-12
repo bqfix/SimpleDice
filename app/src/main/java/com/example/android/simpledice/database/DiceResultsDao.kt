@@ -11,7 +11,7 @@ import com.example.android.simpledice.utils.DiceResults
 @Dao
 interface DiceResultsDao {
 
-    @Query("SELECT * FROM ${Constants.DICE_RESULTS_TABLE_NAME} ORDER BY dateCreated")
+    @Query("SELECT * FROM ${Constants.DICE_RESULTS_TABLE_NAME} ORDER BY dateCreated DESC")
     fun loadAllDiceResults() : LiveData<List<DiceResults>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
