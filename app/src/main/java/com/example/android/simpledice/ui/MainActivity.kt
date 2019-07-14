@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -30,6 +31,7 @@ import com.example.android.simpledice.utils.Utils
 import com.google.android.gms.ads.AdRequest
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.banner_ad.*
+import kotlinx.android.synthetic.main.d_keyboard.*
 import kotlinx.android.synthetic.main.main_edit_favorite.*
 import kotlinx.android.synthetic.main.results.*
 import java.util.*
@@ -174,21 +176,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
         }
 
         roll_button.setOnClickListener { v ->
-            //Click listener to check the validity of a roll, and execute it if it is acceptable
-            val formula = command_input_et!!.text.toString()
-            val diceValidity = Utils.isValidDiceRoll(this@MainActivity, formula) //Get a boolean of whether the
-            if (diceValidity.isValid) {
-                //If formula is okay, make a new nameless DiceRoll for display in the results text
-                val diceRoll = DiceRoll(formula = formula, hasOverHundredDice = diceValidity.hasOverHundredDice)
-
-                RollAsyncTask(this@MainActivity).execute(diceRoll)
-
-                //Hide keyboards
-                hideSystemKeyboard(v)
-                hideCustomKeyboard()
-            } else {
-                Toast.makeText(this@MainActivity, diceValidity.errorMessage, Toast.LENGTH_SHORT).show()
-            }
+            executeDiceRoll(v)
         }
 
         main_help_button.setOnClickListener {
@@ -271,6 +259,11 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
                     showCustomKeyboard()
                 }
             }
+
+            //Custom enter button logic for MainActivity
+            enter_button.setOnClickListener { v ->
+                executeDiceRoll(v)
+            }
         } else { //Use basic system keyboard
 
             //Hide Custom Keyboard if visible, and enable system keyboard (if Android version > 21)
@@ -283,6 +276,15 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
 
             //Clear the old onClickListener if it exists
             command_input_et.setOnClickListener(null)
+
+            //Add listener to perform logic when enter key is clicked
+            command_input_et.setOnKeyListener{ v, keyCode, event ->
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    executeDiceRoll(v)
+                    return@setOnKeyListener true
+                }
+                return@setOnKeyListener false
+            }
 
             command_input_et.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
                 //FocusChange listener to minimize keyboard when clicking outside of EditText
@@ -384,5 +386,26 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
     fun unregisterOnSharedPreferenceChangeListener(){
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
+    }
+
+    /**
+     * A function to perform the steps necessary to extract a formula and roll the dice, called in clickListeners
+     */
+    fun executeDiceRoll(view: View){
+        //Check the validity of a roll, and execute it if it is acceptable
+        val formula = command_input_et!!.text.toString()
+        val diceValidity = Utils.isValidDiceRoll(this@MainActivity, formula) //Get a boolean of whether the
+        if (diceValidity.isValid) {
+            //If formula is okay, make a new nameless DiceRoll for display in the results text
+            val diceRoll = DiceRoll(formula = formula, hasOverHundredDice = diceValidity.hasOverHundredDice)
+
+            RollAsyncTask(this@MainActivity).execute(diceRoll)
+
+            //Hide keyboards
+            hideSystemKeyboard(view)
+            hideCustomKeyboard()
+        } else {
+            Toast.makeText(this@MainActivity, diceValidity.errorMessage, Toast.LENGTH_SHORT).show()
+        }
     }
 }
