@@ -19,13 +19,7 @@
 
         <include layout="@layout/favorite_recycler_view"/>
 
-        <ProgressBar
-                android:id="@+id/favorite_progress_bar"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:visibility="gone"
-        />
+
     </FrameLayout>
 
     <View

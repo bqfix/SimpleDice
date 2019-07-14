@@ -37,10 +37,11 @@
     <string name="all_favorites_button">All</string>
     <string name="help_dialog_positive_button">Got it!</string>
     <string name="sign_in_success">Signed in successfully.</string>
-    <string name="main_no_favorites">No favorites.  Click \"All\" to add some!</string>
+    <string name="main_no_favorites">No favorites.\nClick \"All\" to add some!</string>
 
     <!-- FavoriteActivity -->
     <string name="favorite_activity_title">Favorites</string>
+    <string name="favorite_activity_no_favorites">No favorites.\nClick the plus to add some!</string>
     <string name="widget_intent_handled_boolean_key" translatable="false">widget_intent_handled_boolean_key</string>
 
     <!-- AddFavoriteActivity -->

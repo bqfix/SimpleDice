@@ -49,5 +49,6 @@
     <string name="d_keyboard_off">システムキーボード使用中</string>
     <string name="d_keyboard_on">アプリキーボード使用中</string>
     <string name="d_keyboard_pref_description">アプリのキーボード使用？</string>
-    <string name="main_no_favorites">お気に入りはありません。「全部」をクリックして追加しましょう。</string>
+    <string name="main_no_favorites">お気に入りはありません。\n「全部」をクリックして追加しましょう。</string>
+    <string name="favorite_activity_no_favorites">お気に入りはありません。\n「＋」をクリックして追加しましょう。</string>
 </resources>

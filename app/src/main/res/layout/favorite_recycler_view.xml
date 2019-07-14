@@ -12,6 +12,23 @@
             android:clipToPadding="false"
             android:paddingBottom="80dp"/>
 
+    <ProgressBar
+            android:id="@+id/favorite_progress_bar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+    />
+
+    <TextView
+            android:id="@+id/favorite_activity_no_favorites_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/basic_text_style"
+            android:text="@string/favorite_activity_no_favorites"
+            android:visibility="gone"
+            android:gravity="center"/>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_favorite_fab"
             android:layout_width="wrap_content"
