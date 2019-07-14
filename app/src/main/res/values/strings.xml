@@ -37,6 +37,7 @@
     <string name="all_favorites_button">All</string>
     <string name="help_dialog_positive_button">Got it!</string>
     <string name="sign_in_success">Signed in successfully.</string>
+    <string name="main_no_favorites">No favorites.  Click \"All\" to add some!</string>
 
     <!-- FavoriteActivity -->
     <string name="favorite_activity_title">Favorites</string>
@@ -86,7 +87,7 @@
     <!-- Widget -->
     <string name="widget_dice_roll_parcelable_key" translatable="false">widget_dice_roll_parcelable_key</string>
     <string name="widget_title">Favorites</string>
-    <string name="no_favorites_found">Click to refresh/launch favorites.</string>
+    <string name="widget_no_favorites">Click to refresh/launch favorites.</string>
     <string name="widget_favorites_intent_parcelable_key" translatable="false">widget_favorites_intent_parcelable_key
     </string>
 

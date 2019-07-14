@@ -33,6 +33,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="8dp"
-            android:text="@string/no_favorites_found"
+            android:text="@string/widget_no_favorites"
             style="@style/basic_text_style"/>
 </LinearLayout>

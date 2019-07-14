@@ -334,8 +334,9 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
         val viewModel = ViewModelProviders.of(this).get(AllDiceRollsViewModel::class.java)
         viewModel.diceRolls!!.observe(this, androidx.lifecycle.Observer { diceRolls ->
 
-            //Hide Recycler, show ProgressBar
+            //Hide Recycler and error, show ProgressBar
             main_favorite_rv.visibility = View.GONE
+            main_no_favorites_tv.visibility = View.GONE
             main_progress_bar.visibility = View.VISIBLE
 
 
@@ -346,9 +347,16 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
             mFavoriteDiceRollAdapter!!.setFavoriteDiceRolls(mDiceRolls!!)
             Utils.updateAllWidgets(this@MainActivity, mDiceRolls!!)
 
-            //Show Recycler, hide ProgressBar
-            main_favorite_rv.visibility = View.VISIBLE
+            //Hide progress, check if there are any favorites
             main_progress_bar.visibility = View.GONE
+            if (mDiceRolls!!.isEmpty()){
+                //Show error
+                main_no_favorites_tv.visibility = View.VISIBLE
+            } else {
+                //Show Recycler
+                main_favorite_rv.visibility = View.VISIBLE
+
+            }
         })
     }
 

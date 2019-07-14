@@ -109,6 +109,14 @@
                 android:layout_width="match_parent"
                 android:clipToPadding="false"
                 android:paddingBottom="80dp"/>
+        <TextView
+                android:id="@+id/main_no_favorites_tv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@style/basic_text_style"
+                android:text="@string/main_no_favorites"
+                android:visibility="gone"
+                android:gravity="center"/>
         <ProgressBar
                 android:id="@+id/main_progress_bar"
                 android:layout_width="60dp"

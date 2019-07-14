@@ -40,7 +40,7 @@
     <string name="sign_in_success">サインインしました。</string>
     <string name="too_many_dice">エラー：一気にダイス100000個以上はふれません。</string>
     <string name="widget_title">お気に入り</string>
-    <string name="no_favorites_found">クリックしてアプリを開けて再読み込みしてください。</string>
+    <string name="widget_no_favorites">クリックしてアプリを開けて再読み込みしてください。</string>
     <string name="name_contains_invalid_characters">名前には:または%入力できません。</string>
     <string name="about">アプリについて</string>
     <string name="about_license_header">ライセンス</string>
@@ -49,4 +49,5 @@
     <string name="d_keyboard_off">システムキーボード使用中</string>
     <string name="d_keyboard_on">アプリキーボード使用中</string>
     <string name="d_keyboard_pref_description">アプリのキーボード使用？</string>
+    <string name="main_no_favorites">お気に入りはありません。「全部」をクリックして追加しましょう。</string>
 </resources>
