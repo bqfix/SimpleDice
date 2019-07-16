@@ -1,39 +1,40 @@
 {
   "project_info": {
-    "project_number": "91603005022",
-    "firebase_url": "https://simple-dice-9ab64.firebaseio.com",
-    "project_id": "simple-dice-9ab64",
-    "storage_bucket": "simple-dice-9ab64.appspot.com"
+    "project_number": "303557019795",
+    "firebase_url": "https://simple-dice-c006a.firebaseio.com",
+    "project_id": "simple-dice-c006a",
+    "storage_bucket": "simple-dice-c006a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:91603005022:android:d87f026a3354fb11",
+        "mobilesdk_app_id": "1:303557019795:android:d87f026a3354fb11",
         "android_client_info": {
           "package_name": "com.example.android.simpledice"
         }
       },
       "oauth_client": [
         {
-          "client_id": "91603005022-uegvsfccj1he8hktvnln045tmfqc4on9.apps.googleusercontent.com",
+          "client_id": "303557019795-18sfqg5j0k5r41pd5cr28269dj414ju7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCoNhZf1waLNYc_hgEBPN_tqHZAxGzdCOE"
+          "current_key": "AIzaSyDOb88eW-_1T6zpPaa2V-E1vqe7agQ98Fw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "91603005022-uegvsfccj1he8hktvnln045tmfqc4on9.apps.googleusercontent.com",
+              "client_id": "303557019795-18sfqg5j0k5r41pd5cr28269dj414ju7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-8678342060364320~4864690622"
     }
   ],
   "configuration_version": "1"
