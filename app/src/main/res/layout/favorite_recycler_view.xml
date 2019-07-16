@@ -10,7 +10,8 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp"
             android:clipToPadding="false"
-            android:paddingBottom="80dp"/>
+            android:paddingBottom="80dp"
+            android:transitionName="@string/favorite_recycler_transition_key"/>
 
     <ProgressBar
             android:id="@+id/favorite_progress_bar"

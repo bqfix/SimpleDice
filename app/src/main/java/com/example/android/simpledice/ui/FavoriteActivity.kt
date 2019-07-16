@@ -160,6 +160,10 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
                 startActivity(settingsIntent)
                 return true
             }
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
             else -> return super.onOptionsItemSelected(item)
         }
     }

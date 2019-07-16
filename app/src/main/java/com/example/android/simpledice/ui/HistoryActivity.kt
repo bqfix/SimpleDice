@@ -70,6 +70,10 @@ class HistoryActivity : AppCompatActivity(), HistoryResultsAdapter.HistoryResult
                 startActivity(settingsIntent)
                 return true
             }
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
             else -> return super.onOptionsItemSelected(item)
         }
     }

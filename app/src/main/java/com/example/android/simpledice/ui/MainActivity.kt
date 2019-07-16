@@ -1,11 +1,13 @@
 package com.example.android.simpledice.ui
 
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.util.Pair
 import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
@@ -37,7 +39,8 @@ import kotlinx.android.synthetic.main.results.*
 import java.util.*
 
 class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRollClickHandler,
-    FavoriteDiceRollAdapter.DeleteDiceRollClickHandler, RollAsyncTask.RollAsyncPostExecute, SharedPreferences.OnSharedPreferenceChangeListener {
+    FavoriteDiceRollAdapter.DeleteDiceRollClickHandler, RollAsyncTask.RollAsyncPostExecute,
+    SharedPreferences.OnSharedPreferenceChangeListener {
 
     private var mFavoriteDiceRollAdapter: FavoriteDiceRollAdapter? = null
     private var mDiceRolls: MutableList<DiceRoll>? = null
@@ -172,7 +175,21 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
         favorites_button.setOnClickListener {
             //Click listener to launch FavoritesActivity
             val intent = Intent(this@MainActivity, FavoriteActivity::class.java)
-            startActivity(intent)
+
+            //Shared elements to animate (if SDK > 21), otherwise simply start activity
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                val optionsBundle = ActivityOptions.makeSceneTransitionAnimation(
+                    this@MainActivity,
+                    Pair.create(main_favorite_rv, main_favorite_rv.transitionName),
+                    Pair.create(results_header, results_header.transitionName),
+                    Pair.create(results_name_tv, results_name_tv.transitionName),
+                    Pair.create(results_descrip_tv, results_descrip_tv.transitionName),
+                    Pair.create(results_total_tv, results_total_tv.transitionName)
+                ).toBundle()
+                startActivity(intent, optionsBundle)
+            } else {
+                startActivity(intent)
+            }
         }
 
         roll_button.setOnClickListener { v ->
@@ -278,7 +295,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
             command_input_et.setOnClickListener(null)
 
             //Add listener to perform logic when enter key is clicked
-            command_input_et.setOnKeyListener{ v, keyCode, event ->
+            command_input_et.setOnKeyListener { v, keyCode, event ->
                 if (keyCode == KeyEvent.KEYCODE_ENTER) {
                     executeDiceRoll(v)
                     return@setOnKeyListener true
@@ -351,7 +368,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
 
             //Hide progress, check if there are any favorites
             main_progress_bar.visibility = View.GONE
-            if (mDiceRolls!!.isEmpty()){
+            if (mDiceRolls!!.isEmpty()) {
                 //Show error
                 main_no_favorites_tv.visibility = View.VISIBLE
             } else {
@@ -366,7 +383,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
      * Override to re-do the keyboard to use when the relevant preference changes
      */
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-        if (key != null && key == getString(R.string.use_d_keyboard_key)){
+        if (key != null && key == getString(R.string.use_d_keyboard_key)) {
             setupEditTextAndKeyboard()
         }
     }
@@ -374,7 +391,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
     /**
      * Called in onCreate to register the OnSharedPreferenceChangeListener that listens for keyboard preference changes
      */
-    fun registerOnSharedPreferenceChangeListener(){
+    fun registerOnSharedPreferenceChangeListener() {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         sharedPreferences.registerOnSharedPreferenceChangeListener(this)
     }
@@ -383,7 +400,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
     /**
      * Called in onDestroy to unregister the OnSharedPreferenceChangeListener that listens for keyboard preference changes
      */
-    fun unregisterOnSharedPreferenceChangeListener(){
+    fun unregisterOnSharedPreferenceChangeListener() {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
     }
@@ -391,7 +408,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
     /**
      * A function to perform the steps necessary to extract a formula and roll the dice, called in clickListeners
      */
-    fun executeDiceRoll(view: View){
+    fun executeDiceRoll(view: View) {
         //Check the validity of a roll, and execute it if it is acceptable
         val formula = command_input_et!!.text.toString()
         val diceValidity = Utils.isValidDiceRoll(this@MainActivity, formula) //Get a boolean of whether the

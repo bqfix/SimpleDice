@@ -45,13 +45,17 @@
                 android:windowSoftInputMode="stateAlwaysHidden|adjustNothing"/>
         <activity
                 android:name=".ui.FavoriteActivity"
-                android:parentActivityName=".ui.MainActivity"/>
+                android:parentActivityName=".ui.MainActivity"
+                android:theme="@style/AppTheme.Favorite"
+                android:launchMode="singleTop"/>
         <activity
                 android:name=".ui.HistoryActivity"
                 android:parentActivityName=".ui.MainActivity"/>
         <activity
                 android:name=".ui.MainActivity"
-                android:windowSoftInputMode="stateAlwaysHidden|adjustNothing">
+                android:windowSoftInputMode="stateAlwaysHidden|adjustNothing"
+                android:theme="@style/AppTheme.Main"
+                android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

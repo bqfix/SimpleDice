@@ -28,6 +28,12 @@
     <string name="dice_results_total_key" translatable="false">dice_results_total</string>
     <string name="dice_results_date_key" translatable="false">dice_results_date</string>
     <string name="use_d_keyboard_key" translatable="false">use_d_keyboard</string>
+    <!-- Transition Keys -->
+    <string name="favorite_recycler_transition_key" translatable="false">favorite_recycler_transition_key</string>
+    <string name="results_header_transition_key" translatable="false">results_header_transition_key</string>
+    <string name="results_name_transition_key" translatable="false">results_name_transition_key</string>
+    <string name="results_descrip_transition_key" translatable="false">results_descrip_transition_key</string>
+    <string name="results_total_transition_key" translatable="false">results_total_transition_key</string>
 
 
     <!-- MainActivity -->

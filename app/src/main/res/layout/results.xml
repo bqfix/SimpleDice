@@ -21,7 +21,8 @@
             android:text="@string/results_header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            android:transitionName="@string/results_header_transition_key"/>
 
     <ScrollView
             android:id="@+id/descrip_scrollview"
@@ -47,7 +48,8 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
-                    tools:text="A DiceRoll Name"/>
+                    tools:text="A DiceRoll Name"
+                    android:transitionName="@string/results_name_transition_key"/>
 
             <TextView
                     android:id="@+id/results_total_tv"
@@ -60,7 +62,8 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:textSize="40sp"
-                    tools:text="6"/>
+                    tools:text="6"
+                    android:transitionName="@string/results_total_transition_key"/>
 
 
             <TextView
@@ -71,7 +74,8 @@
                     android:paddingBottom="16dp"
                     android:layout_marginLeft="24dp"
                     android:layout_marginRight="24dp"
-                    tools:text="1 + 1 + 1 + 2 + 1"/>
+                    tools:text="1 + 1 + 1 + 2 + 1"
+                    android:transitionName="@string/results_descrip_transition_key"/>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
