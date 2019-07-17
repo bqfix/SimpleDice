@@ -21,10 +21,8 @@ import com.example.android.simpledice.utils.DiceRoll
 import com.example.android.simpledice.utils.RollAsyncTask
 import com.example.android.simpledice.utils.Utils
 import com.google.android.gms.ads.AdRequest
-import kotlinx.android.synthetic.main.activity_favorite.*
 import kotlinx.android.synthetic.main.banner_ad.*
 import kotlinx.android.synthetic.main.favorite_recycler_view.*
-import kotlinx.android.synthetic.main.main_edit_favorite.*
 import kotlinx.android.synthetic.main.results.*
 import java.util.*
 

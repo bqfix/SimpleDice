@@ -2,7 +2,6 @@ package com.example.android.simpledice.ui
 
 import android.content.Context
 import android.os.Handler
-import androidx.constraintlayout.widget.ConstraintLayout
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.util.SparseArray
@@ -11,6 +10,7 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputConnection
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.android.simpledice.R
 import kotlinx.android.synthetic.main.d_keyboard.view.*
 

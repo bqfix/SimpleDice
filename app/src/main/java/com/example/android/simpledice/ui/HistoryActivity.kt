@@ -14,14 +14,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.simpledice.R
 import com.example.android.simpledice.database.AllDiceResultsViewModel
-import com.example.android.simpledice.database.AllDiceRollsViewModel
 import com.example.android.simpledice.database.AppDatabase
 import com.example.android.simpledice.database.AppExecutors
 import com.example.android.simpledice.utils.DiceResults
 import com.google.android.gms.ads.AdRequest
 import kotlinx.android.synthetic.main.activity_history.*
 import kotlinx.android.synthetic.main.banner_ad.*
-import kotlinx.android.synthetic.main.favorite_recycler_view.*
 import kotlinx.android.synthetic.main.results.*
 import java.util.*
 

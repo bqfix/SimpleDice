@@ -7,15 +7,12 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.widget.RemoteViews
-
 import com.example.android.simpledice.R
 import com.example.android.simpledice.database.AppDatabase
 import com.example.android.simpledice.database.AppExecutors
 import com.example.android.simpledice.ui.FavoriteActivity
 import com.example.android.simpledice.utils.DiceRoll
 import com.example.android.simpledice.utils.Utils
-
-import java.util.ArrayList
 
 /**
  * Implementation of App Widget functionality.
