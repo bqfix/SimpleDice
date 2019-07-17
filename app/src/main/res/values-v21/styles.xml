@@ -7,6 +7,12 @@
     </style>
 
     <style name="AppTheme.Favorite">
+        <item name="android:windowExitTransition">@transition/fade_exclude_toolbars</item>
+        <item name="android:windowEnterTransition">@transition/fade_exclude_toolbars</item>
+    </style>
+
+    <style name="AppTheme.History">
+        <item name="android:windowExitTransition">@transition/fade_exclude_toolbars</item>
         <item name="android:windowEnterTransition">@transition/fade_exclude_toolbars</item>
     </style>
     

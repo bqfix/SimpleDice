@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
         android:transitionName="@string/results_constraint_layout_transition_key"
-android:id="@+id/results_constraint_layout">
+        android:id="@+id/results_constraint_layout">
 
 
     <TextView
@@ -23,7 +23,8 @@ android:id="@+id/results_constraint_layout">
             android:text="@string/results_header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            android:transitionName="@string/results_header_transition_key"/>
 
     <ScrollView
             android:id="@+id/descrip_scrollview"

@@ -1,6 +1,7 @@
 package com.example.android.simpledice.ui
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -204,5 +205,13 @@ class HistoryActivity : AppCompatActivity(), HistoryResultsAdapter.HistoryResult
         } else { //Provide a hint to click on recycler item if there is no savedInstanceState
             results_descrip_tv.text = getString(R.string.history_click_a_result)
         }
+    }
+
+    override fun onBackPressed() {
+        //If over version 21, scroll the results to start to make activity transitions appear smoother
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            descrip_scrollview.smoothScrollTo(0, 0)
+        }
+        super.onBackPressed()
     }
 }

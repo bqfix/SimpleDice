@@ -1,8 +1,10 @@
 package com.example.android.simpledice.ui
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Pair
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -22,6 +24,7 @@ import com.example.android.simpledice.utils.DiceRoll
 import com.example.android.simpledice.utils.RollAsyncTask
 import com.example.android.simpledice.utils.Utils
 import com.google.android.gms.ads.AdRequest
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.banner_ad.*
 import kotlinx.android.synthetic.main.favorite_recycler_view.*
 import kotlinx.android.synthetic.main.results.*
@@ -150,8 +153,24 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_history -> {
-                val intent = Intent(this@FavoriteActivity, HistoryActivity::class.java)
-                startActivity(intent)
+                val historyIntent = Intent(this@FavoriteActivity, HistoryActivity::class.java)
+
+                //Shared elements to animate (if SDK > 21), otherwise simply start activity
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    //Scroll results to start to make transition smoother
+                    descrip_scrollview.smoothScrollTo(0,0)
+
+                    val optionsBundle = ActivityOptions.makeSceneTransitionAnimation(
+                        this@FavoriteActivity,
+                        Pair.create<View,String>(results_divider, results_divider.transitionName),
+                        Pair.create<View,String>(ad_divider, ad_divider.transitionName),
+                        Pair.create<View,String>(results_header, results_header.transitionName)
+                    ).toBundle()
+
+                    startActivity(historyIntent, optionsBundle)
+                } else {
+                    startActivity(historyIntent)
+                }
                 return true
             }
             R.id.action_settings -> {

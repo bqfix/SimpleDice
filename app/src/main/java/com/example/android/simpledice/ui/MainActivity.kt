@@ -240,8 +240,24 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
                 return true
             }
             R.id.action_history -> {
-                val intent = Intent(this@MainActivity, HistoryActivity::class.java)
-                startActivity(intent)
+                val historyIntent = Intent(this@MainActivity, HistoryActivity::class.java)
+
+                //Shared elements to animate (if SDK > 21), otherwise simply start activity
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    //Scroll results to start to make transition smoother
+                    descrip_scrollview.smoothScrollTo(0,0)
+
+                    val optionsBundle = ActivityOptions.makeSceneTransitionAnimation(
+                        this@MainActivity,
+                        Pair.create<View,String>(results_divider, results_divider.transitionName),
+                        Pair.create<View,String>(ad_divider, ad_divider.transitionName),
+                        Pair.create<View,String>(results_header, results_header.transitionName)
+                    ).toBundle()
+
+                    startActivity(historyIntent, optionsBundle)
+                } else {
+                    startActivity(historyIntent)
+                }
                 return true
             }
             else -> return super.onOptionsItemSelected(item)
