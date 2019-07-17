@@ -51,4 +51,6 @@
     <string name="d_keyboard_pref_description">アプリのキーボード使用？</string>
     <string name="main_no_favorites">お気に入りはありません。\n「全部」をクリックして追加しましょう。</string>
     <string name="favorite_activity_no_favorites">お気に入りはありません。\n「＋」をクリックして追加しましょう。</string>
+    <string name="history_click_a_result">結果をクリックで詳細。</string>
+    <string name="history_no_history_results">履歴は空っぽです。</string>
 </resources>

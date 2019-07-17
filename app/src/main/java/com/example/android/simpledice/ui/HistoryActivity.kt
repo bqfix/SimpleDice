@@ -157,8 +157,9 @@ class HistoryActivity : AppCompatActivity(), HistoryResultsAdapter.HistoryResult
         val viewModel = ViewModelProviders.of(this).get(AllDiceResultsViewModel::class.java)
         viewModel.diceResults!!.observe(this, androidx.lifecycle.Observer { databaseDiceResults ->
 
-            //Hide Recycler, show ProgressBar
+            //Hide Recycler and error, show ProgressBar
             history_rv.visibility = View.GONE
+            history_activity_no_history_tv.visibility = View.GONE
             history_progress_bar.visibility = View.VISIBLE
 
             mDiceResults = arrayListOf() //Clear and repopulate mDiceRolls
@@ -167,9 +168,16 @@ class HistoryActivity : AppCompatActivity(), HistoryResultsAdapter.HistoryResult
             }
             mHistoryAdapter!!.setHistoryResults(mDiceResults!!)
 
-            //Show Recycler, hide ProgressBar
-            history_rv.visibility = View.VISIBLE
+            //Hide progress bar
             history_progress_bar.visibility = View.GONE
+            if (!mDiceResults!!.isEmpty()){
+                //Show if results exist
+                history_rv.visibility = View.VISIBLE
+            } else {
+                //Otherwise show error and blank descrip
+                history_activity_no_history_tv.visibility = View.VISIBLE
+                results_descrip_tv.text = ""
+            }
         })
     }
 
