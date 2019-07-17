@@ -15,7 +15,7 @@
             android:id="@+id/edit_favorite_container"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/divider_50"
+            app:layout_constraintBottom_toTopOf="@+id/results_divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -24,12 +24,13 @@
     </FrameLayout>
 
     <View
-            android:id="@+id/divider_50"
+            android:id="@+id/results_divider"
             style="@style/horizontal_divider"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            android:transitionName="@string/results_divider_transition_key"/>
 
     <FrameLayout
             android:id="@+id/result_container"
@@ -38,7 +39,7 @@
             app:layout_constraintBottom_toTopOf="@+id/ad_divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider_50">
+            app:layout_constraintTop_toBottomOf="@+id/results_divider">
 
         <include layout="@layout/results"/>
     </FrameLayout>
@@ -48,7 +49,8 @@
             style="@style/horizontal_divider"
             app:layout_constraintBottom_toTopOf="@id/main_ad_container"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:transitionName="@string/ad_divider_transition_key"/>
 
     <FrameLayout
             android:id="@+id/main_ad_container"
