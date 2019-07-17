@@ -180,6 +180,8 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 //Scroll results to start to make transition smoother
                 descrip_scrollview.smoothScrollTo(0,0)
+                val layoutManager = main_favorite_rv.layoutManager as LinearLayoutManager
+                layoutManager.scrollToPositionWithOffset(0,0)
 
                 val optionsBundle = ActivityOptions.makeSceneTransitionAnimation(
                     this@MainActivity,

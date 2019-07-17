@@ -271,6 +271,8 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
         //If over version 21, scroll the results to start to make activity transitions appear smoother
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             descrip_scrollview.smoothScrollTo(0, 0)
+            val layoutManager = favorite_rv.layoutManager as LinearLayoutManager
+            layoutManager.scrollToPositionWithOffset(0,0)
         }
         super.onBackPressed()
     }
