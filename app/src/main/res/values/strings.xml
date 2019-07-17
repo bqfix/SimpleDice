@@ -63,6 +63,10 @@
     <string name="delete_all_dialog_message">Delete all history?\n\nThis action cannot be undone.</string>
     <string name="delete_all_dialog_positive">Delete</string>
     <string name="delete_all_dialog_negative">Cancel</string>
+    <string name="history_click_a_result">Click a result to see details.</string>
+    <string name="history_saved_instance_name_key" translatable="false">history_saved_instance_name_key</string>
+    <string name="history_saved_instance_descrip_key" translatable="false">history_saved_instance_descrip_key</string>
+    <string name="history_saved_instance_total_key" translatable="false">history_saved_instance_total_key</string>
 
     <!-- Formula Errors -->
     <string name="invalid_characters">Error: Input contains invalid characters.</string>

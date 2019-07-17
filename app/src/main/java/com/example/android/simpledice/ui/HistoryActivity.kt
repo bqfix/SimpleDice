@@ -37,6 +37,8 @@ class HistoryActivity : AppCompatActivity(), HistoryResultsAdapter.HistoryResult
 
         setTitle(R.string.history_activity_title)
 
+        restoreSavedInstanceState(savedInstanceState)
+
         setupAds()
 
         setupHistoryRecyclerView()
@@ -168,5 +170,39 @@ class HistoryActivity : AppCompatActivity(), HistoryResultsAdapter.HistoryResult
             history_rv.visibility = View.VISIBLE
             history_progress_bar.visibility = View.GONE
         })
+    }
+
+    /**
+     * Override, save the values of the results view for later restoration
+     */
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        //Include the name, descrip, and total from the results views
+        outState.putString(getString(R.string.history_saved_instance_name_key), results_name_tv.text.toString())
+        outState.putString(getString(R.string.history_saved_instance_descrip_key), results_descrip_tv.text.toString())
+        outState.putString(getString(R.string.history_saved_instance_total_key), results_total_tv.text.toString())
+    }
+
+
+
+    /**
+     * A helper method that restores the savedInstanceState on rotation, called in onCreate
+     * @param savedInstanceState to restore, provided by onCreate
+     */
+    private fun restoreSavedInstanceState(savedInstanceState: Bundle?){
+        if (savedInstanceState != null){
+            //Get saved values, restore to textviews (default to empty string if unavailable)
+            val name = savedInstanceState.getString(getString(R.string.history_saved_instance_name_key), "")
+            val total = savedInstanceState.getString(getString(R.string.history_saved_instance_total_key), "")
+            val descrip = savedInstanceState.getString(getString(R.string.history_saved_instance_descrip_key), "")
+
+            results_name_tv.text = name
+            results_total_tv.text = total
+            results_descrip_tv.text = descrip
+
+        } else { //Provide a hint to click on recycler item if there is no savedInstanceState
+            results_descrip_tv.text = getString(R.string.history_click_a_result)
+        }
     }
 }
