@@ -178,13 +178,13 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
 
             //Shared elements to animate (if SDK > 21), otherwise simply start activity
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                //Scroll results to start to make transition smoother
+                descrip_scrollview.smoothScrollTo(0,0)
+
                 val optionsBundle = ActivityOptions.makeSceneTransitionAnimation(
                     this@MainActivity,
-                    Pair.create(main_favorite_rv, main_favorite_rv.transitionName),
-                    Pair.create(results_header, results_header.transitionName),
-                    Pair.create(results_name_tv, results_name_tv.transitionName),
-                    Pair.create(results_descrip_tv, results_descrip_tv.transitionName),
-                    Pair.create(results_total_tv, results_total_tv.transitionName)
+                    Pair.create<View,String>(main_favorite_rv, main_favorite_rv.transitionName),
+                    Pair.create<View,String>(results_constraint_layout, results_constraint_layout.transitionName)
                 ).toBundle()
                 startActivity(intent, optionsBundle)
             } else {
