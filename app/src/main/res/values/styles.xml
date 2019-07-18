@@ -53,6 +53,10 @@
         <item name="strokeColor">@color/colorAccent</item>
     </style>
 
+    <!-- A template for displaying a splash screen while the app is loading -->
+    <style name="AppTheme.Launcher">
+        <item name="android:windowBackground">@drawable/launch_screen</item>
+    </style>
 
     <!-- Blank theme templates for Activities, required for pre-21 versions -->
     <style name="AppTheme.Main"/>

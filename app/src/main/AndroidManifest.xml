@@ -55,7 +55,7 @@
         <activity
                 android:name=".ui.MainActivity"
                 android:windowSoftInputMode="stateAlwaysHidden|adjustNothing"
-                android:theme="@style/AppTheme.Main"
+                android:theme="@style/AppTheme.Launcher"
                 android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

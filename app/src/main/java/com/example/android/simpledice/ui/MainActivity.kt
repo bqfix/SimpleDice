@@ -52,6 +52,9 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        //Set theme back to correct theme (was previously set to launcher theme to display splash)
+        setTheme(R.style.AppTheme_Main)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
