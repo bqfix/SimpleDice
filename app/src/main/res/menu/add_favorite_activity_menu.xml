@@ -9,6 +9,11 @@
             android:icon="@drawable/ic_done"
             android:title="@string/finish_action"
             app:showAsAction="ifRoom" />
+        <item
+                android:id="@+id/action_settings"
+                android:title="@string/settings_menu_action"
+                android:icon="@drawable/ic_settings_white_24dp"
+                app:showAsAction="never"/>
     </group>
 
 </menu>

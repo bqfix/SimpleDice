@@ -1,9 +1,18 @@
 package com.example.android.simpledice.utils
 
+import android.content.Context
 import android.os.AsyncTask
+import android.preference.PreferenceManager
+import com.example.android.simpledice.R
 
-class RollAsyncTask(private val mRollAsyncPostExecute: RollAsyncPostExecute) :
+class RollAsyncTask(private val mRollAsyncPostExecute: RollAsyncPostExecute, context : Context) :
     AsyncTask<DiceRoll, Void, DiceResults>() {
+
+    private val mContext : Context
+
+    init{
+        mContext = context.applicationContext //Initialize context as application context, to prevent leaks in the event that the activity outlives the asynctask (rare)
+    }
 
     override fun doInBackground(vararg params: DiceRoll): DiceResults {
         val diceRoll = params[0]
@@ -60,11 +69,12 @@ class RollAsyncTask(private val mRollAsyncPostExecute: RollAsyncPostExecute) :
             }
         }
 
-        //Create a description of the formula, along with the compiled rolls
+        //Check if the roll is excessively large, or if the setting for showing details is off (assume it's on if not accessible)
         val descrip: String
-        if (diceRoll.hasOverHundredDice) {
-            descrip = Constants.OVER_HUNDRED_DICE_DESCRIP
-        } else {
+        val showDetails = PreferenceManager.getDefaultSharedPreferences(mContext).getBoolean(mContext.getString(R.string.show_diceroll_details_key), true)
+        if (diceRoll.hasOverHundredDice || !showDetails) { //Simply append the formula and nothing else
+            descrip = formula
+        } else { //Create a description of the formula, along with the compiled rolls
             descrip = "$formula=\n\n$compiledRolls"
         }
         val name = diceRoll.name

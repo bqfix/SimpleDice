@@ -90,7 +90,7 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
      * @param favoriteDiceRoll the clicked DiceRoll to be used
      */
     override fun onItemClick(favoriteDiceRoll: DiceRoll) {
-        RollAsyncTask(this).execute(favoriteDiceRoll)
+        RollAsyncTask(this, this).execute(favoriteDiceRoll)
     }
 
     override fun onDeleteClick(favoriteDiceRoll: DiceRoll) {
@@ -197,7 +197,7 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
             val parcelableKey = getString(R.string.widget_favorites_intent_parcelable_key)
             if (intent.hasExtra(parcelableKey)) { //If available, retrieve DiceRoll
                 val diceRoll = intent.getParcelableExtra<DiceRoll>(parcelableKey)
-                RollAsyncTask(this).execute(diceRoll)
+                RollAsyncTask(this, this).execute(diceRoll)
             }
             widgetIntentHandled = true
         }

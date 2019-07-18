@@ -13,5 +13,10 @@
             android:id="@+id/action_about_menu"
             android:title="@string/about"
             app:showAsAction="never"/>
+        <item
+                android:id="@+id/action_settings"
+                android:title="@string/settings_menu_action"
+                android:icon="@drawable/ic_settings_white_24dp"
+                app:showAsAction="never"/>
     </group>
 </menu>

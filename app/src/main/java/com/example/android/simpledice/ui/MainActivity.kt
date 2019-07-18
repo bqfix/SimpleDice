@@ -125,7 +125,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
      * @param favoriteDiceRoll the clicked DiceRoll to be used
      */
     override fun onItemClick(favoriteDiceRoll: DiceRoll) {
-        RollAsyncTask(this).execute(favoriteDiceRoll)
+        RollAsyncTask(this, this).execute(favoriteDiceRoll)
     }
 
     override fun onDeleteClick(favoriteDiceRoll: DiceRoll) {
@@ -436,7 +436,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
             //If formula is okay, make a new nameless DiceRoll for display in the results text
             val diceRoll = DiceRoll(formula = formula, hasOverHundredDice = diceValidity.hasOverHundredDice)
 
-            RollAsyncTask(this@MainActivity).execute(diceRoll)
+            RollAsyncTask(this@MainActivity, this@MainActivity).execute(diceRoll)
 
             //Hide keyboards
             hideSystemKeyboard(view)

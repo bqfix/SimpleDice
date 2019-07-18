@@ -5,7 +5,6 @@ object Constants {
     const val MAX_DIE_SIZE = 1000000
     const val NAME_FORMULA_HUNDRED_BREAK = "::"
     const val DICEROLL_BREAK = "%%"
-    const val OVER_HUNDRED_DICE_DESCRIP = "No details available for rolls with more than 100 dice."
     const val DICE_ROLL_TABLE_NAME = "dice_rolls"
     const val DICE_RESULTS_TABLE_NAME = "dice_results"
 }

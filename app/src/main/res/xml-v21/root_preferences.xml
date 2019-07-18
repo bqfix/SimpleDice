@@ -2,11 +2,20 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <SwitchPreferenceCompat
+            app:key="@string/use_d_keyboard_key"
+            app:title="@string/d_keyboard_pref_description"
+            app:summaryOn="@string/d_keyboard_on"
+            app:summaryOff="@string/d_keyboard_off"
+            app:defaultValue="true"
+    />
+
+    <SwitchPreferenceCompat
             app:key="@string/show_diceroll_details_key"
             app:title="@string/show_diceroll_details_pref_description"
             app:summaryOn="@string/roll_details_on"
             app:summaryOff="@string/roll_details_off"
             app:defaultValue="true"
     />
+
 
 </androidx.preference.PreferenceScreen>

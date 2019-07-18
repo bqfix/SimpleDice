@@ -53,4 +53,7 @@
     <string name="favorite_activity_no_favorites">お気に入りはありません。\n「＋」をクリックして追加しましょう。</string>
     <string name="history_click_a_result">結果をクリックで詳細。</string>
     <string name="history_no_history_results">履歴は空っぽです。</string>
+    <string name="roll_details_off">詳細なし</string>
+    <string name="roll_details_on">詳細あり</string>
+    <string name="show_diceroll_details_pref_description">ダイスの詳細を表定？</string>
 </resources>

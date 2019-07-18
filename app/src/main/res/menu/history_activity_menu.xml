@@ -9,6 +9,11 @@
             android:title="@string/delete_all_history_action"
             app:showAsAction="ifRoom"
             android:icon="@drawable/ic_baseline_delete_forever"/>
+        <item
+                android:id="@+id/action_settings"
+                android:title="@string/settings_menu_action"
+                android:icon="@drawable/ic_settings_white_24dp"
+                app:showAsAction="never"/>
     </group>
 
 </menu>
