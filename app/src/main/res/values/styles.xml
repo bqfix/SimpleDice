@@ -52,4 +52,10 @@
         <item name="android:textColor">@color/colorAccent</item>
         <item name="strokeColor">@color/colorAccent</item>
     </style>
+
+
+    <!-- Blank theme templates for Activities, required for pre-21 versions -->
+    <style name="AppTheme.Main"/>
+    <style name="AppTheme.Favorite"/>
+    <style name="AppTheme.History"/>
 </resources>
