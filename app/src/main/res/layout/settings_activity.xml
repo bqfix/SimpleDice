@@ -1,6 +1,11 @@
-<FrameLayout
+<androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/settings"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorContentBackground"/>
+        style="@style/card_view">
+    <FrameLayout
+            android:id="@+id/settings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorContentBackground"/>
+</androidx.cardview.widget.CardView>
