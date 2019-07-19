@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorBackground"
+        style="@style/top_level_activity_layout"
         tools:context="com.example.android.simpledice.ui.MainActivity">
 
     <androidx.cardview.widget.CardView

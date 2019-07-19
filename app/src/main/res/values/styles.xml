@@ -6,7 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:windowBackground">@color/colorNeutralBackground</item>
     </style>
 
     <style name="basic_text_style">
@@ -65,13 +65,13 @@
 
     <style name="card_view">
         <item name="android:layout_margin">8dp</item>
-        <item name="android:background">@android:color/white</item>
+        <item name="android:background">@android:color/transparent</item>
         <item name="cardCornerRadius">8dp</item>
         <item name="cardElevation">8dp</item>
     </style>
 
     <style name="card_background">
-        <item name="android:background">@android:color/white</item>
+        <item name="android:background">@color/colorContentBackground</item>
     </style>
 
     <!-- Blank templates for pre-21 -->
@@ -79,4 +79,8 @@
     <style name="results_card_view" parent="card_view"/>
     <style name="main_card_background" parent="card_background"/>
     <style name="results_card_background" parent="card_background"/>
+
+    <style name="top_level_activity_layout">
+        <item name="android:background">@color/colorNeutralBackground</item>
+    </style>
 </resources>

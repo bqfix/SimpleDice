@@ -5,7 +5,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/colorBackground"
+        android:background="@color/colorContentBackground"
         android:id="@+id/widget_list_item_ll">
 
     <TextView

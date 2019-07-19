@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorBackground"
+        style="@style/top_level_activity_layout"
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="true"

@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.example.android.simpledice.ui.MainActivity"
-        android:background="@color/colorBackground">
+        style="@style/top_level_activity_layout">
 
     <androidx.cardview.widget.CardView
             android:layout_width="0dp"
