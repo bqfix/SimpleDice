@@ -8,19 +8,20 @@
         android:background="@color/colorBackground"
         tools:context="com.example.android.simpledice.ui.MainActivity">
 
-    <FrameLayout
+    <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/results_divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/card_view">
 
         <include layout="@layout/favorite_recycler_view"/>
 
 
-    </FrameLayout>
+    </androidx.cardview.widget.CardView>
 
     <View
             android:id="@+id/results_divider"
@@ -31,17 +32,18 @@
             app:layout_constraintTop_toTopOf="parent"
             android:transitionName="@string/results_divider_transition_key"/>
 
-    <FrameLayout
+    <androidx.cardview.widget.CardView
             android:id="@+id/result_container"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/ad_divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/results_divider">
+            app:layout_constraintTop_toBottomOf="@+id/results_divider"
+            style="@style/card_view">
 
         <include layout="@layout/results"/>
-    </FrameLayout>
+    </androidx.cardview.widget.CardView>
 
     <View
             android:id="@+id/ad_divider"

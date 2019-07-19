@@ -5,7 +5,6 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorBackground"
         android:transitionName="@string/results_constraint_layout_transition_key"
         android:id="@+id/results_constraint_layout">
 
