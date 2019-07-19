@@ -13,7 +13,7 @@
             app:layout_constraintEnd_toStartOf="@+id/results_divider"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            style="@style/card_view">
+            style="@style/main_card_view">
 
         <include layout="@layout/history_recycler_view"/>
     </androidx.cardview.widget.CardView>
@@ -36,7 +36,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/results_divider"
             app:layout_constraintTop_toTopOf="parent"
-            style="@style/card_view">
+            style="@style/results_card_view">
 
         <include layout="@layout/results"/>
     </androidx.cardview.widget.CardView>

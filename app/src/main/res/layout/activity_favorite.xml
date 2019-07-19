@@ -16,7 +16,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            style="@style/card_view">
+            style="@style/main_card_view">
 
         <include layout="@layout/favorite_recycler_view"/>
 
@@ -40,7 +40,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/results_divider"
-            style="@style/card_view">
+            style="@style/results_card_view">
 
         <include layout="@layout/results"/>
     </androidx.cardview.widget.CardView>

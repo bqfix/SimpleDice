@@ -15,5 +15,20 @@
         <item name="android:windowExitTransition">@transition/fade_exclude_toolbars</item>
         <item name="android:windowEnterTransition">@transition/fade_exclude_toolbars</item>
     </style>
-    
+
+    <style name="main_card_view" parent="card_view">
+        <item name="android:transitionName">@string/main_card_view_transition_key</item>
+    </style>
+
+    <style name="results_card_view" parent="card_view">
+        <item name="android:transitionName">@string/results_card_view_transition_key</item>
+    </style>
+
+    <style name="main_card_background" parent="card_background">
+        <item name="android:transitionName">@string/main_card_background_transition_key</item>
+    </style>
+
+    <style name="results_card_background" parent="card_background">
+        <item name="android:transitionName">@string/results_card_background_transition_key</item>
+    </style>
 </resources>

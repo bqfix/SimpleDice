@@ -158,13 +158,15 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
                 //Shared elements to animate (if SDK > 21), otherwise simply start activity
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     //Scroll results to start to make transition smoother
-                    descrip_scrollview.smoothScrollTo(0,0)
+                    descrip_scrollview.smoothScrollTo(0, 0)
 
                     val optionsBundle = ActivityOptions.makeSceneTransitionAnimation(
                         this@FavoriteActivity,
-                        Pair.create<View,String>(results_divider, results_divider.transitionName),
-                        Pair.create<View,String>(ad_divider, ad_divider.transitionName),
-                        Pair.create<View,String>(results_header, results_header.transitionName)
+                        Pair.create<View, String>(main_card_background, main_card_background.transitionName),
+                        Pair.create<View, String>(results_card_background, results_card_background.transitionName),
+                        Pair.create<View, String>(results_divider, results_divider.transitionName),
+                        Pair.create<View, String>(ad_divider, ad_divider.transitionName),
+                        Pair.create<View, String>(results_header, results_header.transitionName)
                     ).toBundle()
 
                     startActivity(historyIntent, optionsBundle)
@@ -257,7 +259,7 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
 
             //Hide ProgressBar, check for favorites
             favorite_progress_bar.visibility = View.GONE
-            if (mDiceRolls!!.isEmpty()){
+            if (mDiceRolls!!.isEmpty()) {
                 //Show error
                 favorite_activity_no_favorites_tv.visibility = View.VISIBLE
             } else {
@@ -272,7 +274,7 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             descrip_scrollview.smoothScrollTo(0, 0)
             val layoutManager = favorite_rv.layoutManager as LinearLayoutManager
-            layoutManager.scrollToPositionWithOffset(0,0)
+            layoutManager.scrollToPositionWithOffset(0, 0)
         }
         super.onBackPressed()
     }

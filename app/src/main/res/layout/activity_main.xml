@@ -13,7 +13,7 @@
 
     <androidx.cardview.widget.CardView
             android:id="@+id/edit_favorite_container"
-            style="@style/card_view"
+            style="@style/main_card_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/results_divider"
@@ -41,7 +41,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/results_divider"
-            style="@style/card_view">
+            style="@style/results_card_view">
 
         <include layout="@layout/results"/>
     </androidx.cardview.widget.CardView>
