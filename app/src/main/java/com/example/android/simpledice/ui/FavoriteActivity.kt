@@ -24,10 +24,10 @@ import com.example.android.simpledice.utils.DiceRoll
 import com.example.android.simpledice.utils.RollAsyncTask
 import com.example.android.simpledice.utils.Utils
 import com.google.android.gms.ads.AdRequest
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.banner_ad.*
 import kotlinx.android.synthetic.main.favorite_recycler_view.*
 import kotlinx.android.synthetic.main.results.*
+import kotlinx.android.synthetic.main.toolbar.*
 import java.util.*
 
 class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRollClickHandler,
@@ -44,6 +44,8 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite)
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         setTitle(R.string.favorites_title)
 
         setupAds()

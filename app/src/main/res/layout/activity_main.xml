@@ -11,6 +11,14 @@
         android:focusableInTouchMode="true"
         tools:context="com.example.android.simpledice.ui.MainActivity">
 
+
+    <include layout="@layout/toolbar"
+             app:layout_constraintTop_toTopOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             android:id="@+id/included_toolbar"/>
+
+
     <androidx.cardview.widget.CardView
             android:id="@+id/edit_favorite_container"
             style="@style/main_card_view"
@@ -19,7 +27,7 @@
             app:layout_constraintBottom_toTopOf="@+id/result_container"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/included_toolbar" android:layout_marginTop="8dp">
 
         <include layout="@layout/main_edit_favorite"/>
     </androidx.cardview.widget.CardView>

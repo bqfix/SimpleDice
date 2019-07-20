@@ -19,9 +19,11 @@ import com.example.android.simpledice.database.AppDatabase
 import com.example.android.simpledice.database.AppExecutors
 import com.example.android.simpledice.utils.DiceResults
 import com.google.android.gms.ads.AdRequest
+import kotlinx.android.synthetic.main.activity_history.*
 import kotlinx.android.synthetic.main.banner_ad.*
 import kotlinx.android.synthetic.main.history_recycler_view.*
 import kotlinx.android.synthetic.main.results.*
+import kotlinx.android.synthetic.main.toolbar.*
 import java.util.*
 
 class HistoryActivity : AppCompatActivity(), HistoryResultsAdapter.HistoryResultsClickHandler {
@@ -35,6 +37,8 @@ class HistoryActivity : AppCompatActivity(), HistoryResultsAdapter.HistoryResult
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history)
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         setTitle(R.string.history_activity_title)
 

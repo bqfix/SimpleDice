@@ -8,13 +8,17 @@
         style="@style/top_level_activity_layout"
         tools:context="com.example.android.simpledice.ui.HistoryActivity">
 
+    <include layout="@layout/toolbar" app:layout_constraintTop_toTopOf="parent"
+             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+             android:id="@+id/included_toolbar"/>
+
     <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/result_container"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/included_toolbar"
             style="@style/main_card_view">
 
         <include layout="@layout/history_recycler_view"/>

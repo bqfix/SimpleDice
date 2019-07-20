@@ -5,18 +5,22 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorNeutralBackground"
+        style="@style/top_level_activity_layout"
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
         tools:context="com.example.android.simpledice.ui.AddFavoriteActivity">
+
+    <include layout="@layout/toolbar" app:layout_constraintTop_toTopOf="parent"
+             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+             android:id="@+id/included_toolbar"/>
 
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             style="@style/card_view"
             app:layout_constraintBottom_toTopOf="@+id/add_favorite_ad_container"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/included_toolbar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 

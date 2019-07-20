@@ -36,6 +36,7 @@ import kotlinx.android.synthetic.main.banner_ad.*
 import kotlinx.android.synthetic.main.d_keyboard.*
 import kotlinx.android.synthetic.main.main_edit_favorite.*
 import kotlinx.android.synthetic.main.results.*
+import kotlinx.android.synthetic.main.toolbar.*
 import java.util.*
 
 class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRollClickHandler,
@@ -57,6 +58,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
 
         setupAds()
 

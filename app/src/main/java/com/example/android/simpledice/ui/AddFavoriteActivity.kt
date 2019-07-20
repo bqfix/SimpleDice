@@ -25,6 +25,7 @@ import com.example.android.simpledice.utils.Utils
 import com.google.android.gms.ads.AdRequest
 import kotlinx.android.synthetic.main.activity_add_favorite.*
 import kotlinx.android.synthetic.main.banner_ad.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 class AddFavoriteActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -40,6 +41,8 @@ class AddFavoriteActivity : AppCompatActivity(), SharedPreferences.OnSharedPrefe
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_favorite)
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         setupAds()
 
