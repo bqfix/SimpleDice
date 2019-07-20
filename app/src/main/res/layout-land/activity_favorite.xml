@@ -11,7 +11,7 @@
     <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/ad_divider"
+            app:layout_constraintBottom_toTopOf="@id/favorite_ad_container"
             app:layout_constraintEnd_toStartOf="@+id/results_divider"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -21,21 +21,18 @@
 
     </androidx.cardview.widget.CardView>
 
-    <View
+    <androidx.constraintlayout.widget.Guideline
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/results_divider"
-            style="@style/vertical_divider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.66"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_height="0dp" app:layout_constraintBottom_toTopOf="@+id/ad_divider"
-            android:transitionName="@string/results_divider_transition_key"/>
+            app:layout_constraintGuide_percent=".66"/>
 
     <androidx.cardview.widget.CardView
             android:id="@+id/result_container"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/ad_divider"
+            app:layout_constraintBottom_toTopOf="@+id/favorite_ad_container"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/results_divider"
             app:layout_constraintTop_toTopOf="parent"
@@ -43,15 +40,6 @@
 
         <include layout="@layout/results"/>
     </androidx.cardview.widget.CardView>
-
-    <View
-            android:id="@+id/ad_divider"
-            style="@style/horizontal_divider"
-            android:layout_width="0dp"
-            app:layout_constraintBottom_toTopOf="@id/favorite_ad_container"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:transitionName="@string/ad_divider_transition_key"/>
 
     <FrameLayout
             android:id="@+id/favorite_ad_container"

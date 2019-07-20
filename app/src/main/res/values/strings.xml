@@ -32,8 +32,6 @@
     <!-- Transition Keys -->
     <string name="favorite_recycler_transition_key" translatable="false">favorite_recycler_transition_key</string>
     <string name="results_constraint_layout_transition_key" translatable="false">results_constraint_layout_transition_key</string>
-    <string name="results_divider_transition_key" translatable="false">results_divider_transition_key</string>
-    <string name="ad_divider_transition_key" translatable="false">ad_divider_transition_key</string>
     <string name="results_header_transition_key" translatable="false">results_header_transition_key</string>
     <string name="main_card_view_transition_key" translatable="false">main_card_view_transition_key</string>
     <string name="results_card_view_transition_key" translatable="false">results_card_view_transition_key</string>

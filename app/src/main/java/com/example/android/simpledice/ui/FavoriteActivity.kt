@@ -164,8 +164,6 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
                         this@FavoriteActivity,
                         Pair.create<View, String>(main_card_background, main_card_background.transitionName),
                         Pair.create<View, String>(results_card_background, results_card_background.transitionName),
-                        Pair.create<View, String>(results_divider, results_divider.transitionName),
-                        Pair.create<View, String>(ad_divider, ad_divider.transitionName),
                         Pair.create<View, String>(results_header, results_header.transitionName)
                     ).toBundle()
 

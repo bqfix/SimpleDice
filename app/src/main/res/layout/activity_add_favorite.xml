@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             style="@style/card_view"
-            app:layout_constraintBottom_toTopOf="@+id/ad_divider"
+            app:layout_constraintBottom_toTopOf="@+id/add_favorite_ad_container"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -144,13 +144,6 @@
             </ScrollView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
-    <View
-            android:id="@+id/ad_divider"
-            style="@style/horizontal_divider"
-            app:layout_constraintBottom_toTopOf="@id/add_favorite_ad_container"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
 
     <FrameLayout
             android:id="@+id/add_favorite_ad_container"

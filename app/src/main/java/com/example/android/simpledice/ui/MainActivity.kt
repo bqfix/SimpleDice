@@ -190,9 +190,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
                     this@MainActivity,
                     Pair.create<View, String>(main_favorite_rv, main_favorite_rv.transitionName),
                     Pair.create<View, String>(main_card_background, main_card_background.transitionName),
-                    Pair.create<View, String>(result_container, result_container.transitionName),
-                    Pair.create<View, String>(results_divider, results_divider.transitionName),
-                    Pair.create<View, String>(ad_divider, ad_divider.transitionName)
+                    Pair.create<View, String>(result_container, result_container.transitionName)
                 ).toBundle()
                 startActivity(intent, optionsBundle)
             } else {
@@ -257,10 +255,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
                         this@MainActivity,
                         Pair.create<View, String>(main_card_background, main_card_background.transitionName),
                         Pair.create<View, String>(results_card_background, results_card_background.transitionName),
-                        Pair.create<View, String>(results_divider, results_divider.transitionName),
-                        Pair.create<View, String>(ad_divider, ad_divider.transitionName),
                         Pair.create<View, String>(results_header, results_header.transitionName)
-
                     ).toBundle()
 
                     startActivity(historyIntent, optionsBundle)
