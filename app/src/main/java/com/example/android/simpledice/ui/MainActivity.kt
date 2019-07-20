@@ -189,7 +189,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
                 val optionsBundle = ActivityOptions.makeSceneTransitionAnimation(
                     this@MainActivity,
                     Pair.create<View, String>(main_favorite_rv, main_favorite_rv.transitionName),
-                    Pair.create<View, String>(result_container, result_container.transitionName)
+                    Pair.create<View, String>(results_header, results_header.transitionName)
                 ).toBundle()
                 startActivity(intent, optionsBundle)
             } else {
