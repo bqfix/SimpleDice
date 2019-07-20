@@ -5,7 +5,6 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        style="@style/top_level_activity_layout"
         tools:context="com.example.android.simpledice.ui.HistoryActivity">
 
     <include layout="@layout/toolbar" app:layout_constraintTop_toTopOf="parent"

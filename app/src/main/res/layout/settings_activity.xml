@@ -4,8 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        style="@style/top_level_activity_layout">
+        android:layout_width="match_parent">
 
     <include layout="@layout/toolbar" app:layout_constraintTop_toTopOf="parent"
              app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
