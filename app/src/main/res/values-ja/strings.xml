@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Simple Dice</string>
     <string name="add_favorite_activity_title">お気に入り追加</string>
-    <string name="all_favorites_button">全部</string>
+    <string name="all_favorites_button">全て</string>
     <string name="clear_button">削除</string>
     <string name="command_input_hint">ダイスを入力してみてください。</string>
     <string name="delete">削除</string>
@@ -29,7 +29,7 @@
     <string name="history_menu_action">履歴</string>
     <string name="incorrectly_formatted_section">エラー：文字のミスが入っています。</string>
     <string name="info_button">ヘルプ</string>
-    <string name="input_name_hint">新お気に入りの名前。</string>
+    <string name="input_name_hint">お気に入りの名前</string>
     <string name="invalid_characters">エラー：不可能の文字が入っています。</string>
     <string name="more_button">もっと</string>
     <string name="name_header">名前</string>
@@ -37,10 +37,9 @@
     <string name="results_header">結果</string>
     <string name="roll_button">振る</string>
     <string name="saved_to_firebase">保存しました。</string>
-    <string name="sign_in_success">サインインしました。</string>
-    <string name="too_many_dice">エラー：一気にダイス100000個以上はふれません。</string>
+    <string name="too_many_dice">エラー：一度にダイス100,000個以上はふれません。</string>
     <string name="widget_title">お気に入り</string>
-    <string name="widget_no_favorites">クリックしてアプリを開けて再読み込みしてください。</string>
+    <string name="widget_no_favorites">クリックしてアプリを開いて再読み込みしてください。</string>
     <string name="name_contains_invalid_characters">名前には:または%入力できません。</string>
     <string name="about">アプリについて</string>
     <string name="about_license_header">ライセンス</string>
@@ -48,12 +47,12 @@
     <string name="title_activity_settings">設定</string>
     <string name="d_keyboard_off">システムキーボード使用中</string>
     <string name="d_keyboard_on">アプリキーボード使用中</string>
-    <string name="d_keyboard_pref_description">アプリのキーボード使用？</string>
+    <string name="d_keyboard_pref_description">アプリのキーボード使用</string>
     <string name="main_no_favorites">お気に入りはありません。\n「全部」をクリックして追加しましょう。</string>
     <string name="favorite_activity_no_favorites">お気に入りはありません。\n「＋」をクリックして追加しましょう。</string>
-    <string name="history_click_a_result">結果をクリックで詳細。</string>
+    <string name="history_click_a_result">結果をクリックで詳細を見る。</string>
     <string name="history_no_history_results">履歴は空っぽです。</string>
     <string name="roll_details_off">詳細なし</string>
     <string name="roll_details_on">詳細あり</string>
-    <string name="show_diceroll_details_pref_description">ダイスの詳細を表定？</string>
+    <string name="show_diceroll_details_pref_description">ダイスの詳細を表示</string>
 </resources>

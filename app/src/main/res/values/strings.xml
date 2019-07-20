@@ -2,7 +2,7 @@
     <string name="app_name">Simple Dice</string>
 
     <!-- Shared -->
-    <string name="info_button">Info</string>
+    <string name="info_button">Help</string>
     <string name="more_button">More</string>
     <string name="results_header">Results</string>
     <string name="command_input_hint">Input a command.</string>
@@ -45,7 +45,6 @@
     <string name="favorites_title">Favorites</string>
     <string name="all_favorites_button">All</string>
     <string name="help_dialog_positive_button">Got it!</string>
-    <string name="sign_in_success">Signed in successfully.</string>
     <string name="main_no_favorites">No favorites.\nClick \"All\" to add some!</string>
 
     <!-- FavoriteActivity -->
@@ -78,7 +77,7 @@
     <!-- Formula Errors -->
     <string name="invalid_characters">Error: Input contains invalid characters.</string>
     <string name="incorrectly_formatted_section">Error: A section is incorrectly formatted.</string>
-    <string name="too_many_dice">Error: Each dice roll must have less than 100000 dice.</string>
+    <string name="too_many_dice">Error: Each dice roll must have less than 100,000 dice.</string>
     <string name="no_error">No errors.</string>
     <string name="name_contains_invalid_characters">Name cannot contain : or %</string>
 
@@ -135,11 +134,11 @@
 
     <!-- Settings Activity -->
     <string name="title_activity_settings">Settings</string>
-    <string name="d_keyboard_pref_description">Use App Keyboard?</string>
+    <string name="d_keyboard_pref_description">Use App Keyboard</string>
     <string name="d_keyboard_on">Using App Keyboard</string>
     <string name="d_keyboard_off">Using Default Keyboard</string>
     <string name="settings_menu_action">Settings</string>
-    <string name="show_diceroll_details_pref_description">Show roll details?</string>
+    <string name="show_diceroll_details_pref_description">Show roll details</string>
     <string name="roll_details_on">Showing roll details</string>
     <string name="roll_details_off">Hiding roll details</string>
 
