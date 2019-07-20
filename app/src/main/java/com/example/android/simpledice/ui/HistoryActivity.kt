@@ -223,6 +223,10 @@ class HistoryActivity : AppCompatActivity(), HistoryResultsAdapter.HistoryResult
         //If over version 21, scroll the results to start to make activity transitions appear smoother
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             descrip_scrollview.smoothScrollTo(0, 0)
+
+            //Set the CardView's isTransitionGroup to true, to prevent blinking on return
+            history_rv_container.isTransitionGroup = true
+            result_container.isTransitionGroup = true
         }
         super.onBackPressed()
     }

@@ -18,7 +18,8 @@
             app:layout_constraintEnd_toStartOf="@+id/results_divider"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/included_toolbar"
-            style="@style/main_card_view">
+            style="@style/main_card_view"
+            android:id="@+id/favorite_rv_container">
 
         <include layout="@layout/favorite_recycler_view"/>
 

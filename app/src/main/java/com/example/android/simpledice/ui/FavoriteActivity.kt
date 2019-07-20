@@ -24,6 +24,7 @@ import com.example.android.simpledice.utils.DiceRoll
 import com.example.android.simpledice.utils.RollAsyncTask
 import com.example.android.simpledice.utils.Utils
 import com.google.android.gms.ads.AdRequest
+import kotlinx.android.synthetic.main.activity_favorite.*
 import kotlinx.android.synthetic.main.banner_ad.*
 import kotlinx.android.synthetic.main.favorite_recycler_view.*
 import kotlinx.android.synthetic.main.results.*
@@ -273,6 +274,10 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
             descrip_scrollview.smoothScrollTo(0, 0)
             val layoutManager = favorite_rv.layoutManager as LinearLayoutManager
             layoutManager.scrollToPositionWithOffset(0, 0)
+
+            //Set the CardView's isTransitionGroup to true, to prevent blinking on return
+            favorite_rv_container.isTransitionGroup = true
+            result_container.isTransitionGroup = true
         }
         super.onBackPressed()
     }

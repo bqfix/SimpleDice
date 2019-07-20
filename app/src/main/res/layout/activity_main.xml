@@ -26,7 +26,7 @@
             app:layout_constraintBottom_toTopOf="@+id/result_container"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/included_toolbar" android:layout_marginTop="8dp">
+            app:layout_constraintTop_toBottomOf="@+id/included_toolbar" >
 
         <include layout="@layout/main_edit_favorite"/>
     </androidx.cardview.widget.CardView>
