@@ -162,8 +162,6 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
 
                     val optionsBundle = ActivityOptions.makeSceneTransitionAnimation(
                         this@FavoriteActivity,
-                        Pair.create<View, String>(main_card_background, main_card_background.transitionName),
-                        Pair.create<View, String>(results_card_background, results_card_background.transitionName),
                         Pair.create<View, String>(results_header, results_header.transitionName)
                     ).toBundle()
 

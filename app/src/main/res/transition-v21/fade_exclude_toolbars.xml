@@ -3,5 +3,7 @@
     <targets>
         <target android:excludeId="@android:id/navigationBarBackground"/>
         <target android:excludeId="@android:id/statusBarBackground"/>
+        <target android:excludeId="@id/main_card_background"/>
+        <target android:excludeId="@id/results_card_background"/>
     </targets>
 </fade>

@@ -16,6 +16,20 @@
         <item name="android:windowEnterTransition">@transition/fade_exclude_toolbars</item>
     </style>
 
+    <!-- v21 must exclude transitiongroup -->
+    <style name="card_view">
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">8dp</item>
+        <item name="android:transitionGroup">false</item>
+    </style>
+
+    <style name="top_level_activity_layout">
+        <item name="android:background">@color/colorNeutralBackground</item>
+        <item name="android:transitionGroup">false</item>
+    </style>
+
     <style name="main_card_view" parent="card_view">
         <item name="android:transitionName">@string/main_card_view_transition_key</item>
     </style>
