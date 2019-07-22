@@ -1,7 +1,7 @@
 package com.example.android.simpledice.utils
 
 object Constants {
-    const val MAX_DICE_PER_ROLL = 100000
+    const val MAX_DICE_PER_ROLL = 10000
     const val MAX_DIE_SIZE = 1000000
     const val NAME_FORMULA_HUNDRED_BREAK = "::"
     const val DICEROLL_BREAK = "%%"

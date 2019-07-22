@@ -5,11 +5,10 @@
     <string name="info_button">Help</string>
     <string name="more_button">More</string>
     <string name="results_header">Results</string>
-    <string name="command_input_hint">Input a command.</string>
     <string name="history_menu_action">History</string>
     <string name="formula_edittext_allowed_digits" translatable="false">0123456789 +-dD</string>
     <string name="help_formula_advice">Formula must include only numbers, spaces, + and &#8211; symbols, and the letter
-        \'d\'. First section must NOT be negative. Cannot randomize numbers over 1000000. Examples
+        \'d\'. First section must NOT be negative. Cannot randomize numbers over 1,000,000. Examples
         include:\n\n6\n1d6\n2d8 &#8211; 1\n1d4&#8211;1d4+1d4&#8211;1d4\n\nIf d\'s are being overwritten, double tap the button.
     </string> <!-- &#8211; is for en dash -->
     <string name="help_header">Advice</string>
@@ -46,6 +45,7 @@
     <string name="all_favorites_button">All</string>
     <string name="help_dialog_positive_button">Got it!</string>
     <string name="main_no_favorites">No favorites.\nClick \"All\" to add some!</string>
+    <string name="command_input_hint">Input a dice roll (ex. 2d6), or click Help for more info!</string>
 
     <!-- FavoriteActivity -->
     <string name="favorite_activity_title">Favorites</string>
@@ -77,7 +77,7 @@
     <!-- Formula Errors -->
     <string name="invalid_characters">Error: Input contains invalid characters.</string>
     <string name="incorrectly_formatted_section">Error: A section is incorrectly formatted.</string>
-    <string name="too_many_dice">Error: Each dice roll must have less than 100,000 dice.</string>
+    <string name="too_many_dice">Error: Each dice roll must have less than 10,000 dice.</string>
     <string name="no_error">No errors.</string>
     <string name="name_contains_invalid_characters">Name cannot contain : or %</string>
 

@@ -4,7 +4,7 @@
     <string name="add_favorite_activity_title">お気に入り追加</string>
     <string name="all_favorites_button">全て</string>
     <string name="clear_button">削除</string>
-    <string name="command_input_hint">ダイスを入力してみてください。</string>
+    <string name="command_input_hint">ダイスを入力してみてください。(例：2d6) 詳しくはヘルプをクリック。</string>
     <string name="delete">削除</string>
     <string name="delete_all_dialog_message">履歴を削除？\n取り戻すことはできません。</string>
     <string name="delete_all_dialog_negative">キャンセル</string>
@@ -23,7 +23,7 @@
     <string name="finish_action">終了</string>
     <string name="formula_header">方式</string>
     <string name="help_dialog_positive_button">了解</string>
-    <string name="help_formula_advice">方式は数字、空白、＋、&#8211;、「d」の字のみです。1000000以上の値は扱えません。最初の値はマイナスはできません。\n\n例：\n6\n1d6\n2d8&#8211;1\n1d4&#8211;1d4+1d4&#8211;1d4\nなどなど。\n\nもし「ｄ」が消えつつあるのでしたら、二回押してください。</string>
+    <string name="help_formula_advice">方式は数字、空白、＋、&#8211;、「d」の字のみです。1,000,000以上の値は扱えません。最初の値はマイナスはできません。\n\n例：\n6\n1d6\n2d8&#8211;1\n1d4&#8211;1d4+1d4&#8211;1d4\nなどなど。\n\nもし「ｄ」が消えつつあるのでしたら、二回押してください。</string>
     <string name="help_header">ヒント</string>
     <string name="history_activity_title">履歴</string>
     <string name="history_menu_action">履歴</string>
@@ -37,7 +37,7 @@
     <string name="results_header">結果</string>
     <string name="roll_button">振る</string>
     <string name="saved_to_firebase">保存しました。</string>
-    <string name="too_many_dice">エラー：一度にダイス100,000個以上はふれません。</string>
+    <string name="too_many_dice">エラー：一度にダイス10,000個以上はふれません。</string>
     <string name="widget_title">お気に入り</string>
     <string name="widget_no_favorites">クリックしてアプリを開いて再読み込みしてください。</string>
     <string name="name_contains_invalid_characters">名前には:または%入力できません。</string>
