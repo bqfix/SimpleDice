@@ -74,12 +74,13 @@
     <string name="history_saved_instance_descrip_key" translatable="false">history_saved_instance_descrip_key</string>
     <string name="history_saved_instance_total_key" translatable="false">history_saved_instance_total_key</string>
 
-    <!-- Formula Errors -->
+    <!-- Errors -->
     <string name="invalid_characters">Error: Input contains invalid characters.</string>
     <string name="incorrectly_formatted_section">Error: A section is incorrectly formatted.</string>
     <string name="too_many_dice">Error: Each dice roll must have less than 10,000 dice.</string>
     <string name="no_error">No errors.</string>
     <string name="name_contains_invalid_characters">Name cannot contain : or %</string>
+    <string name="async_task_still_executing">Still rolling dice, please wait.</string>
 
     <!-- Custom Keyboard -->
     <string name="one_button" translatable="false">1</string>

@@ -51,6 +51,8 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
 
     private var mDatabase: AppDatabase? = null
 
+    private var mIsStillRolling : Boolean = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //Set theme back to correct theme (was previously set to launcher theme to display splash)
@@ -129,8 +131,13 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
      *
      * @param favoriteDiceRoll the clicked DiceRoll to be used
      */
-    override fun onItemClick(favoriteDiceRoll: DiceRoll) {
-        RollAsyncTask(this,this, this).execute(favoriteDiceRoll)
+    override fun onItemClick(favoriteDiceRoll: DiceRoll) { //If a previous roll is still going, show an error, else create a new roll
+        if (mIsStillRolling) {
+            Toast.makeText(this, R.string.async_task_still_executing, Toast.LENGTH_SHORT).show()
+        } else {
+            RollAsyncTask(this,this, this).execute(favoriteDiceRoll)
+        }
+
     }
 
     override fun onDeleteClick(favoriteDiceRoll: DiceRoll) {
@@ -346,7 +353,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
      * Override to handle UI changes, etc when a roll begins executing
      */
     override fun handleRollPreExecute() {
-
+        mIsStillRolling = true
     }
 
 
@@ -356,6 +363,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
      * @param diceResults to use
      */
     override fun handleRollResult(diceResults: DiceResults) {
+        mIsStillRolling = false
         diceResults.saveToSharedPreferences(this)
         setDataToResultsViews(diceResults)
         AppExecutors.getInstance()!!.diskIO.execute {
@@ -444,7 +452,12 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
             //If formula is okay, make a new nameless DiceRoll for display in the results text
             val diceRoll = DiceRoll(formula = formula, hasOverHundredDice = diceValidity.hasOverHundredDice)
 
-            RollAsyncTask(this@MainActivity,this@MainActivity, this@MainActivity).execute(diceRoll)
+            //If a previous roll is still going, show an error, else create a new roll
+            if (mIsStillRolling) {
+                Toast.makeText(this, R.string.async_task_still_executing, Toast.LENGTH_SHORT).show()
+            } else {
+                RollAsyncTask(this@MainActivity,this@MainActivity, this@MainActivity).execute(diceRoll)
+            }
 
             //Hide keyboards
             hideSystemKeyboard(view)

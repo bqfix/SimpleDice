@@ -55,4 +55,5 @@
     <string name="roll_details_off">詳細なし</string>
     <string name="roll_details_on">詳細あり</string>
     <string name="show_diceroll_details_pref_description">ダイスの詳細を表示</string>
+    <string name="async_task_still_executing">ダイスはまだふっています。ちょっと待って。</string>
 </resources>

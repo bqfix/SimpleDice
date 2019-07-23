@@ -8,6 +8,7 @@ import android.util.Pair
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuCompat
@@ -41,6 +42,8 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
     private var mDiceRolls: MutableList<DiceRoll>? = null
 
     private var mDatabase: AppDatabase? = null
+
+    private var mIsStillRolling : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,8 +95,12 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
      *
      * @param favoriteDiceRoll the clicked DiceRoll to be used
      */
-    override fun onItemClick(favoriteDiceRoll: DiceRoll) {
-        RollAsyncTask(this,this, this).execute(favoriteDiceRoll)
+    override fun onItemClick(favoriteDiceRoll: DiceRoll) { //If a previous roll is still going, show an error, else create a new roll
+        if (mIsStillRolling) {
+            Toast.makeText(this, R.string.async_task_still_executing, Toast.LENGTH_SHORT).show()
+        } else {
+            RollAsyncTask(this, this, this).execute(favoriteDiceRoll)
+        }
     }
 
     override fun onDeleteClick(favoriteDiceRoll: DiceRoll) {
@@ -208,7 +215,7 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
      * Override to handle UI changes, etc when a roll begins executing
      */
     override fun handleRollPreExecute() {
-
+        mIsStillRolling = true
     }
 
     /** Handling for any given diceResults that occur from rolling a DiceRoll
@@ -216,6 +223,7 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
      * @param diceResults to use
      */
     override fun handleRollResult(diceResults: DiceResults) {
+        mIsStillRolling = false
         diceResults.saveToSharedPreferences(this)
         setDataToResultsViews(diceResults)
         AppExecutors.getInstance()!!.diskIO.execute {
