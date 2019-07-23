@@ -5,7 +5,7 @@ import android.os.AsyncTask
 import android.preference.PreferenceManager
 import com.example.android.simpledice.R
 
-class RollAsyncTask(private val mRollAsyncPostExecute: RollAsyncPostExecute, context : Context) :
+class RollAsyncTask(private val mRollAsyncPreExecute: RollAsyncPreExecute, private val mRollAsyncPostExecute: RollAsyncPostExecute, context : Context) :
     AsyncTask<DiceRoll, Void, DiceResults>() {
 
     private val mContext : Context
@@ -84,8 +84,17 @@ class RollAsyncTask(private val mRollAsyncPostExecute: RollAsyncPostExecute, con
     }
 
 
+    override fun onPreExecute() {
+        super.onPreExecute()
+        mRollAsyncPreExecute.handleRollPreExecute()
+    }
+
     override fun onPostExecute(diceResults: DiceResults) {
         mRollAsyncPostExecute.handleRollResult(diceResults)
+    }
+
+    interface RollAsyncPreExecute {
+        fun handleRollPreExecute()
     }
 
     interface RollAsyncPostExecute {

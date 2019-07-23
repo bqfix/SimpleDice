@@ -40,7 +40,7 @@ import kotlinx.android.synthetic.main.toolbar.*
 import java.util.*
 
 class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRollClickHandler,
-    FavoriteDiceRollAdapter.DeleteDiceRollClickHandler, RollAsyncTask.RollAsyncPostExecute,
+    FavoriteDiceRollAdapter.DeleteDiceRollClickHandler, RollAsyncTask.RollAsyncPreExecute, RollAsyncTask.RollAsyncPostExecute,
     SharedPreferences.OnSharedPreferenceChangeListener {
 
     private var mFavoriteDiceRollAdapter: FavoriteDiceRollAdapter? = null
@@ -130,7 +130,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
      * @param favoriteDiceRoll the clicked DiceRoll to be used
      */
     override fun onItemClick(favoriteDiceRoll: DiceRoll) {
-        RollAsyncTask(this, this).execute(favoriteDiceRoll)
+        RollAsyncTask(this,this, this).execute(favoriteDiceRoll)
     }
 
     override fun onDeleteClick(favoriteDiceRoll: DiceRoll) {
@@ -342,6 +342,13 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
         super.onBackPressed()
     }
 
+    /**
+     * Override to handle UI changes, etc when a roll begins executing
+     */
+    override fun handleRollPreExecute() {
+
+    }
+
 
     /**
      * Override, for any given diceResults that occur from rolling a DiceRoll
@@ -437,7 +444,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
             //If formula is okay, make a new nameless DiceRoll for display in the results text
             val diceRoll = DiceRoll(formula = formula, hasOverHundredDice = diceValidity.hasOverHundredDice)
 
-            RollAsyncTask(this@MainActivity, this@MainActivity).execute(diceRoll)
+            RollAsyncTask(this@MainActivity,this@MainActivity, this@MainActivity).execute(diceRoll)
 
             //Hide keyboards
             hideSystemKeyboard(view)
