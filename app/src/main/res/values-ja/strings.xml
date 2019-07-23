@@ -4,7 +4,7 @@
     <string name="add_favorite_activity_title">お気に入り追加</string>
     <string name="all_favorites_button">全て</string>
     <string name="clear_button">削除</string>
-    <string name="command_input_hint">ダイスを入力してみてください。(例：2d6) 詳しくはヘルプをクリック。</string>
+    <string name="command_input_hint">ダイスを入力 (例：2d6)</string>
     <string name="delete">削除</string>
     <string name="delete_all_dialog_message">履歴を削除？\n取り戻すことはできません。</string>
     <string name="delete_all_dialog_negative">キャンセル</string>

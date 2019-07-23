@@ -45,7 +45,7 @@
     <string name="all_favorites_button">All</string>
     <string name="help_dialog_positive_button">Got it!</string>
     <string name="main_no_favorites">No favorites.\nClick \"All\" to add some!</string>
-    <string name="command_input_hint">Input a dice roll (ex. 2d6), or click Help for more info!</string>
+    <string name="command_input_hint">Input a dice roll (ex. 2d6)</string>
 
     <!-- FavoriteActivity -->
     <string name="favorite_activity_title">Favorites</string>
