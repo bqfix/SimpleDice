@@ -354,6 +354,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
      */
     override fun handleRollPreExecute() {
         mIsStillRolling = true
+        results_progress_bar.visibility = View.VISIBLE
     }
 
 
@@ -364,6 +365,8 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
      */
     override fun handleRollResult(diceResults: DiceResults) {
         mIsStillRolling = false
+        results_progress_bar.visibility = View.GONE
+
         diceResults.saveToSharedPreferences(this)
         setDataToResultsViews(diceResults)
         AppExecutors.getInstance()!!.diskIO.execute {
