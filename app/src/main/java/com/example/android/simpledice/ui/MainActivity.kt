@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.preference.PreferenceManager
 import android.util.Pair
 import android.view.KeyEvent
@@ -354,7 +355,12 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
      */
     override fun handleRollPreExecute() {
         mIsStillRolling = true
-        results_progress_bar.visibility = View.VISIBLE
+
+        /* Check again after 200ms if IsStillRolling, and show the progress bar if so.
+        This is to prevent blinking ProgressBars on rolls that happen almost instantly (i.e. most rolls)
+        */
+        val handler = Handler()
+        handler.postDelayed({ if (mIsStillRolling){ results_progress_bar.visibility = View.VISIBLE }}, 200)
     }
 
 

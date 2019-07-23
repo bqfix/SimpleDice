@@ -4,6 +4,7 @@ import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.util.Pair
 import android.view.Menu
 import android.view.MenuItem
@@ -216,7 +217,12 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
      */
     override fun handleRollPreExecute() {
         mIsStillRolling = true
-        results_progress_bar.visibility = View.VISIBLE
+
+        /* Check again after 200ms if IsStillRolling, and show the progress bar if so.
+        This is to prevent blinking ProgressBars on rolls that happen almost instantly (i.e. most rolls)
+        */
+        val handler = Handler()
+        handler.postDelayed({ if (mIsStillRolling){ results_progress_bar.visibility = View.VISIBLE }}, 200)
     }
 
     /** Handling for any given diceResults that occur from rolling a DiceRoll
