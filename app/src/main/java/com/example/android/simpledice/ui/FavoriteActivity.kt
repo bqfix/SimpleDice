@@ -21,10 +21,7 @@ import com.example.android.simpledice.R
 import com.example.android.simpledice.database.AllDiceRollsViewModel
 import com.example.android.simpledice.database.AppDatabase
 import com.example.android.simpledice.database.AppExecutors
-import com.example.android.simpledice.utils.DiceResults
-import com.example.android.simpledice.utils.DiceRoll
-import com.example.android.simpledice.utils.RollAsyncTask
-import com.example.android.simpledice.utils.Utils
+import com.example.android.simpledice.utils.*
 import com.google.android.gms.ads.AdRequest
 import kotlinx.android.synthetic.main.activity_favorite.*
 import kotlinx.android.synthetic.main.banner_ad.*
@@ -222,7 +219,7 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
         This is to prevent blinking ProgressBars on rolls that happen almost instantly (i.e. most rolls)
         */
         val handler = Handler()
-        handler.postDelayed({ if (mIsStillRolling){ results_progress_bar.visibility = View.VISIBLE }}, 200)
+        handler.postDelayed({ if (mIsStillRolling){ results_progress_bar.visibility = View.VISIBLE }}, Constants.TIME_BEFORE_RESULTS_PROGRESS_BAR_DISPLAYS)
     }
 
     /** Handling for any given diceResults that occur from rolling a DiceRoll
