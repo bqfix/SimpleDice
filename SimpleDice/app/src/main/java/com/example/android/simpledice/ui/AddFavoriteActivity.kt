@@ -70,17 +70,17 @@ class AddFavoriteActivity : AppCompatActivity(), SharedPreferences.OnSharedPrefe
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.action_done -> {
                 saveNewFavorite()
-                return true
+                true
             }
             R.id.action_settings -> {
                 val settingsIntent = Intent(this@AddFavoriteActivity, SettingsActivity::class.java)
                 startActivity(settingsIntent)
-                return true
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
@@ -102,9 +102,9 @@ class AddFavoriteActivity : AppCompatActivity(), SharedPreferences.OnSharedPrefe
                 if (mDiceRoll == null){
                     mDiceRoll = DiceRoll()
                 }
-                mDiceRoll!!.name == name
+                mDiceRoll!!.name = name
                 mDiceRoll!!.formula = formula
-                mDiceRoll!!.hasOverHundredDice == hasOverHundredDice
+                mDiceRoll!!.hasOverHundredDice = hasOverHundredDice
                 AppExecutors.getInstance()!!.diskIO.execute {
                     mDatabase!!.diceRollDao().updateDiceRoll(mDiceRoll!!)
                 }
@@ -272,7 +272,7 @@ class AddFavoriteActivity : AppCompatActivity(), SharedPreferences.OnSharedPrefe
     /**
      * Called in onCreate to register the OnSharedPreferenceChangeListener that listens for keyboard preference changes
      */
-    fun registerOnSharedPreferenceChangeListener(){
+    private fun registerOnSharedPreferenceChangeListener(){
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         sharedPreferences.registerOnSharedPreferenceChangeListener(this)
     }
@@ -281,7 +281,7 @@ class AddFavoriteActivity : AppCompatActivity(), SharedPreferences.OnSharedPrefe
     /**
      * Called in onDestroy to unregister the OnSharedPreferenceChangeListener that listens for keyboard preference changes
      */
-    fun unregisterOnSharedPreferenceChangeListener(){
+    private fun unregisterOnSharedPreferenceChangeListener(){
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
     }

@@ -8,4 +8,5 @@ object Constants {
     const val DICE_ROLL_TABLE_NAME = "dice_rolls"
     const val DICE_RESULTS_TABLE_NAME = "dice_results"
     const val TIME_BEFORE_RESULTS_PROGRESS_BAR_DISPLAYS : Long = 200
+    const val MILLIS_BETWEEN_CHARACTER_CHANGE = 50
 }

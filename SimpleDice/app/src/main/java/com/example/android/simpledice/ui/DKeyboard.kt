@@ -12,11 +12,10 @@ import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputConnection
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.android.simpledice.R
+import com.example.android.simpledice.utils.Constants.MILLIS_BETWEEN_CHARACTER_CHANGE
 import kotlinx.android.synthetic.main.d_keyboard.view.*
 
 class DKeyboard : ConstraintLayout, View.OnClickListener, View.OnLongClickListener {
-
-    private val MILLIS_BETWEEN_CHARACTER_CHANGE = 50
 
     private val keyValues = SparseArray<String>()
     private var mInputConnection: InputConnection? = null

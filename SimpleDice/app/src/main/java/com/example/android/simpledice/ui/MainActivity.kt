@@ -433,7 +433,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
     /**
      * Called in onCreate to register the OnSharedPreferenceChangeListener that listens for keyboard preference changes
      */
-    fun registerOnSharedPreferenceChangeListener() {
+    private fun registerOnSharedPreferenceChangeListener() {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         sharedPreferences.registerOnSharedPreferenceChangeListener(this)
     }
@@ -442,7 +442,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
     /**
      * Called in onDestroy to unregister the OnSharedPreferenceChangeListener that listens for keyboard preference changes
      */
-    fun unregisterOnSharedPreferenceChangeListener() {
+    private fun unregisterOnSharedPreferenceChangeListener() {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
     }
@@ -450,7 +450,7 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
     /**
      * A function to perform the steps necessary to extract a formula and roll the dice, called in clickListeners
      */
-    fun executeDiceRoll(view: View) {
+    private fun executeDiceRoll(view: View) {
         //Check the validity of a roll, and execute it if it is acceptable
         val formula = command_input_et!!.text.toString()
         val diceValidity = Utils.isValidDiceRoll(this@MainActivity, formula) //Get a boolean of whether the

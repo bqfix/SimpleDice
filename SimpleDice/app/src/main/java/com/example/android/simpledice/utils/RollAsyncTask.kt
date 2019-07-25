@@ -70,12 +70,11 @@ class RollAsyncTask(private val mRollAsyncPreExecute: RollAsyncPreExecute, priva
         }
 
         //Check if the roll is excessively large, or if the setting for showing details is off (assume it's on if not accessible)
-        val descrip: String
         val showDetails = PreferenceManager.getDefaultSharedPreferences(mContext).getBoolean(mContext.getString(R.string.show_diceroll_details_key), true)
-        if (diceRoll.hasOverHundredDice || !showDetails) { //Simply append the formula and nothing else
-            descrip = formula
+        val descrip = if (diceRoll.hasOverHundredDice || !showDetails) { //Simply append the formula and nothing else
+            formula
         } else { //Create a description of the formula, along with the compiled rolls
-            descrip = "$formula=\n\n$compiledRolls"
+            "$formula=\n\n$compiledRolls"
         }
         val name = diceRoll.name
 

@@ -48,7 +48,7 @@ class FavoriteActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDi
         setContentView(R.layout.activity_favorite)
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        setTitle(R.string.favorites_title)
+        setTitle(R.string.favorite_activity_title)
 
         setupAds()
 
