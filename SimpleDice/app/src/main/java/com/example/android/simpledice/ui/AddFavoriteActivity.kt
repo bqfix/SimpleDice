@@ -139,7 +139,10 @@ class AddFavoriteActivity : AppCompatActivity(), SharedPreferences.OnSharedPrefe
         if (d_keyboard.visibility == View.GONE) {
             d_keyboard.executeEnterAnimation()
         }
-        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+        //If the device is in landscape and is NOT a tablet, we have limited screen real estate, so hide the name section
+        val isTablet = resources.getBoolean(R.bool.is_tablet)
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE && !isTablet) {
             name_header_tv.visibility = View.GONE
             name_input_et.visibility = View.GONE
         }
@@ -152,6 +155,8 @@ class AddFavoriteActivity : AppCompatActivity(), SharedPreferences.OnSharedPrefe
         if (d_keyboard.visibility == View.VISIBLE) {
             d_keyboard.executeExitAnimation()
         }
+
+        //Regardless of whether the showCustomKeyboard method hides the name section, ensure they're visible
         name_header_tv.visibility = View.VISIBLE
         name_input_et.visibility = View.VISIBLE
     }
