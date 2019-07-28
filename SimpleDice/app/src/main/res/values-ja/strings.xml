@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Simple Dice</string>
+    <string name="app_name">シンプルダイス</string>
     <string name="add_favorite_activity_title">お気に入り追加</string>
     <string name="all_favorites_button">全て</string>
     <string name="clear_button">削除</string>
