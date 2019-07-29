@@ -4,6 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/banner_ad"
-    ads:adSize="BANNER"
-    ads:adUnitId="@string/admob_test_banner_id"
+    ads:adSize="SMART_BANNER"
+    ads:adUnitId="@string/admob_banner_id"
     />
