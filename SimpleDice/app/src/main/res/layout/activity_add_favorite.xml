@@ -8,7 +8,7 @@
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        tools:context="com.example.android.simpledice.ui.AddFavoriteActivity">
+        tools:context="com.gmail.maxfixsoftware.simpledice.ui.AddFavoriteActivity">
 
     <include layout="@layout/toolbar" app:layout_constraintTop_toTopOf="parent"
              app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
@@ -161,7 +161,7 @@
     </FrameLayout>
 
     <!-- Requires elevation of 10 to be above CardViews -->
-    <com.example.android.simpledice.ui.DKeyboard
+    <com.gmail.maxfixsoftware.simpledice.ui.DKeyboard
             android:id="@+id/d_keyboard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:303557019795:android:d87f026a3354fb11",
+        "mobilesdk_app_id": "1:303557019795:android:68070ac29d73889f",
         "android_client_info": {
-          "package_name": "com.example.android.simpledice"
+          "package_name": "com.gmail.maxfixsoftware.simpledice"
         }
       },
       "oauth_client": [
