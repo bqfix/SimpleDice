@@ -29,6 +29,7 @@ import com.example.android.simpledice.database.AppDatabase
 import com.example.android.simpledice.database.AppExecutors
 import com.example.android.simpledice.utils.*
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.banner_ad.*
 import kotlinx.android.synthetic.main.d_keyboard.*
@@ -379,9 +380,11 @@ class MainActivity : AppCompatActivity(), FavoriteDiceRollAdapter.FavoriteDiceRo
     }
 
     /**
-     * A helper method to setup an ad into the activity's AdView
+     * A helper method to initialize ads for the app, and setup an ad into the activity's AdView
      */
     private fun setupAds() {
+        MobileAds.initialize(this, getString(R.string.admob_app_id))
+
         val adRequest = AdRequest.Builder().build()
         banner_ad.loadAd(adRequest)
     }
