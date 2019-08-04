@@ -6,6 +6,8 @@ A Kotlin-based dice-rolling app that stores all data locally.  Allows users to s
 
 Conversion of Capstone Project.  See that project for more details.
 
+Published on Google Play: https://play.google.com/store/apps/details?id=com.gmail.maxfixsoftware.simpledice
+
 ### What I accomplished in this project:
 
 * Converted a project entirely from Java to Kotlin, and updated to use AndroidX.
