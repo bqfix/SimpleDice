@@ -53,6 +53,26 @@
                             android:layout_margin="8dp"
                             android:gravity="center"
                             android:text="@string/about_license_body"/>
+
+                    <TextView
+                            android:id="@+id/about_privacy_header_tv"
+                            style="@style/header_style"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:gravity="center"
+                            android:text="@string/about_privacy_header"/>
+
+                    <TextView
+                            android:id="@+id/about_privacy_body_tv"
+                            style="@style/basic_text_style"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:gravity="center"
+                            android:linksClickable="true"
+                            android:autoLink="web"
+                            android:text="@string/about_privacy_body"/>
                 </LinearLayout>
             </ScrollView>
 

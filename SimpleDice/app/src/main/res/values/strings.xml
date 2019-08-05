@@ -127,6 +127,8 @@
         CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
         DEALINGS IN THE SOFTWARE.
     </string>
+    <string name="about_privacy_header" translatable="false">Privacy Policy</string>
+    <string name="about_privacy_body" translatable="false">See our Privacy Policy at: https://sites.google.com/view/maximumfixsoftware/privacy-policy</string>
 
     <!-- Ads -->
     <string name="admob_app_id" translatable="false">ca-app-pub-8678342060364320~4864690622</string>
